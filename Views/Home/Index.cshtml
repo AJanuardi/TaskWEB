@@ -1,0 +1,74 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+<div>
+<head>
+<style>
+div.gallery {
+  border: 1px solid #ccc;
+}
+
+div.gallery:hover {
+  border: 1px solid #777;
+}
+
+div.gallery img {
+  width: 100%;
+  height: auto;
+}
+
+div.desc {
+  padding: 15px;
+  text-align: center;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.responsive {
+  padding: 0 6px;
+  float: left;
+  width: 24.99999%;
+}
+
+.clearfix:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+</style>
+<div class="text-center">
+        <h1 class="display-6">Welcome To Our Store</h1>
+        <p>Start your Day from one Bites of JoyFull</p>
+</div>
+</head>
+        <ul>
+<body>
+        @{
+            var x = ViewBag.items;
+            foreach (var i in x)
+            {
+                if (i.rating > 4)
+                {
+                    <div class="responsive">
+                        <div class="gallery">
+                            <a 
+                            target="_blank" href="/Product/Detail/@i.id">
+                            <img src="@i.foto" width="800" height="600">
+                            </a>
+                            <div class="desc">
+                                <h6>@i.nama</h6>
+                                <div class="text-right">
+                                <h6>Rp.@i.harga,-</h6>
+                                </div>
+                            </div>
+                        </div>
+                        </div>               
+                }
+            }
+        }
+</body>
+    </ul>
+</div>
+

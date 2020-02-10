@@ -1,0 +1,55 @@
+@{
+    ViewData["Title"] = "Get Your Bites First than Other";
+}
+<h2>@ViewData["Title"]</h2>
+
+<p>Confirm your Cookie First</p>
+
+@{
+     var x = ViewBag.items;
+        foreach (var i in x)
+        {
+            <div>
+                <h6>@i.nama</h6>
+                <h6>@i.harga</h6>
+                <input type="text" id="jumlah-@i.id" name="jumlah item" placeholder="Jumlah Item" value="">
+                <input id="price-@i.id" style="width: 25%" value=@i.harga hidden>
+                <input id="subtotal-@i.id" name="jumlah" style="width: 25%"hidden>
+                <button class="btn btn-primary" id="a-@i.id" onclick="javascript: calculate(this)">update</button>
+                <button class="btn btn-danger" id="b-@i.id" onclick="javascript: removeElement(this)">remove</button>
+            </div>
+        }
+        <input id="jumlah_harga">
+}      
+<script type="text/javascript">
+function calculate(id)
+{
+    var hasil = id.id;
+    var x = hasil.substring(2,3);
+    var input = 'jumlah-'+x;
+    var harga = 'price-'+x;
+    var subtotalid = 'subtotal-'+x;
+    var jumlahitem = document.getElementById(input).value;
+    var iharga = document.getElementById(harga).value;
+    var subtotal = jumlahitem*iharga;
+    var arr = document.getElementsByName('jumlah');
+    var total =subtotal;
+    console.log(arr);
+    for (var i = 0; i<arr.length; i++)
+    {
+        if(parseInt(arr[i].value))
+        {
+            total = total + parseInt(arr[i].value);
+        }
+    }
+    document.getElementById(subtotalid).value = subtotal;
+    document.getElementById('jumlah_harga').value = total;
+}
+function removeElement(id) 
+{
+    var hasil = id.id;
+    var x = hasil.substring(2,3);
+    var path = 'Delete/'+x;
+    window.location = path;
+}
+</script>
