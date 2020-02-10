@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MVC.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20200210015426_databasefix")]
-    partial class databasefix
+    [Migration("20200210141428_databa")]
+    partial class databa
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

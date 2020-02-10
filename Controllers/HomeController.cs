@@ -10,6 +10,7 @@ using System.Web;
 using MVC.Data;
 using MVC.Models;
 using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json;
 
 namespace MVC.Controllers
 {
@@ -32,19 +33,62 @@ namespace MVC.Controllers
             return View();
         }
 
-        public IActionResult Product()
+        public IActionResult Product(string sort)
         {
             var items = from i in _appDbContext.Cookies select i;
             ViewBag.items = items;
-            var add = from i in _appDbContext.Carts select i;
-            ViewBag.add = add;
-            return View();
+            System.Console.WriteLine("=========================");
+            System.Console.WriteLine(sort);
+            if (sort == "a")
+            {
+                var x = from i in _appDbContext.Cookies select i;
+                ViewBag.x = x;
+                return View("Indexing","Home"); 
+            }
+            else if (sort == "b")
+            {
+                var x = _appDbContext.Cookies.OrderBy(x => x.nama);
+                ViewBag.x = x;
+                return View("Indexing","Home");
+            }
+            else if (sort == "c")
+            {
+                var x = _appDbContext.Cookies.OrderByDescending(x => x.nama);
+                ViewBag.x = x;
+                return View("Indexing","Home");
+            }
+            else if (sort == "d")
+            {
+                var x = _appDbContext.Cookies.OrderBy(x => x.harga);
+                ViewBag.x = x;
+                return View("Indexing","Home");
+            }
+            else if (sort == "e")
+            {
+                System.Console.WriteLine("===========================================");
+                System.Console.WriteLine(sort);
+                var x = _appDbContext.Cookies.OrderByDescending(x => x.harga);
+                ViewBag.x = x;
+                return View("Indexing", "Home");
+            }
+            return View ("Product", "Home");
         }
+
         public IActionResult Cart()
         {
             var items = from i in _appDbContext.Carts select i;
             ViewBag.items = items;
             return View();
+        }
+        public IActionResult Search(string Search)
+        {
+            System.Console.WriteLine("======================================");
+            System.Console.WriteLine(Search);
+            var items = from i in _appDbContext.Cookies where (i.nama.Contains(Search) || i.deskripsi.Contains(Search)) select i;
+            ViewBag.items = items;
+            System.Console.WriteLine("======================================");
+            System.Console.WriteLine(items);
+            return View("Search", "Home");
         }
         public IActionResult Add(int id)
         {

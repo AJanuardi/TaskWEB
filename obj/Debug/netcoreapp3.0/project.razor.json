@@ -1,5 +1,5 @@
 {
-  "FilePath": "d:\\Users\\bsi50130\\Downloads\\TaskPertama-master\\MVC.csproj",
+  "FilePath": "c:\\Users\\ASUS\\Downloads\\TaskWEB\\MVC.csproj",
   "Configuration": {
     "ConfigurationName": "MVC-3.0",
     "LanguageVersion": "3.0",
@@ -14344,73 +14344,83 @@
   "RootNamespace": "MVC",
   "Documents": [
     {
-      "FilePath": "d:\\Users\\bsi50130\\Downloads\\TaskPertama-master\\Views\\Home\\Cart.cshtml",
-      "TargetPath": "Views\\Home\\Cart.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "d:\\Users\\bsi50130\\Downloads\\TaskPertama-master\\Views\\Home\\Admin.cshtml",
-      "TargetPath": "Views\\Home\\Admin.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "d:\\Users\\bsi50130\\Downloads\\TaskPertama-master\\Views\\Shared\\Error.cshtml",
+      "FilePath": "c:\\Users\\ASUS\\Downloads\\TaskWEB\\Views\\Shared\\Error.cshtml",
       "TargetPath": "Views\\Shared\\Error.cshtml",
       "FileKind": "mvc"
     },
     {
-      "FilePath": "d:\\Users\\bsi50130\\Downloads\\TaskPertama-master\\Views\\Home\\Product.cshtml",
-      "TargetPath": "Views\\Home\\Product.cshtml",
+      "FilePath": "c:\\Users\\ASUS\\Downloads\\TaskWEB\\Views\\Shared\\_ValidationScriptsPartial.cshtml",
+      "TargetPath": "Views\\Shared\\_ValidationScriptsPartial.cshtml",
       "FileKind": "mvc"
     },
     {
-      "FilePath": "d:\\Users\\bsi50130\\Downloads\\TaskPertama-master\\Views\\_ViewImports.cshtml",
-      "TargetPath": "Views\\_ViewImports.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "d:\\Users\\bsi50130\\Downloads\\TaskPertama-master\\Views\\Shared\\_Layout.cshtml",
-      "TargetPath": "Views\\Shared\\_Layout.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "d:\\Users\\bsi50130\\Downloads\\TaskPertama-master\\Views\\Home\\Data.cshtml",
-      "TargetPath": "Views\\Home\\Data.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "d:\\Users\\bsi50130\\Downloads\\TaskPertama-master\\Views\\_ViewStart.cshtml",
-      "TargetPath": "Views\\_ViewStart.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "d:\\Users\\bsi50130\\Downloads\\TaskPertama-master\\Views\\Home\\List.cshtml",
+      "FilePath": "c:\\Users\\ASUS\\Downloads\\TaskWEB\\Views\\Home\\List.cshtml",
       "TargetPath": "Views\\Home\\List.cshtml",
       "FileKind": "mvc"
     },
     {
-      "FilePath": "d:\\Users\\bsi50130\\Downloads\\TaskPertama-master\\Views\\Home\\Editor.cshtml",
-      "TargetPath": "Views\\Home\\Editor.cshtml",
+      "FilePath": "c:\\Users\\ASUS\\Downloads\\TaskWEB\\Views\\Shared\\_Layout.cshtml",
+      "TargetPath": "Views\\Shared\\_Layout.cshtml",
       "FileKind": "mvc"
     },
     {
-      "FilePath": "d:\\Users\\bsi50130\\Downloads\\TaskPertama-master\\Views\\Product\\Detail.cshtml",
+      "FilePath": "c:\\Users\\ASUS\\Downloads\\TaskWEB\\Views\\Home\\Data.cshtml",
+      "TargetPath": "Views\\Home\\Data.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\ASUS\\Downloads\\TaskWEB\\Views\\_ViewStart.cshtml",
+      "TargetPath": "Views\\_ViewStart.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\ASUS\\Downloads\\TaskWEB\\Views\\_ViewImports.cshtml",
+      "TargetPath": "Views\\_ViewImports.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\ASUS\\Downloads\\TaskWEB\\Views\\Home\\Indexing.cshtml",
+      "TargetPath": "Views\\Home\\Indexing.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\ASUS\\Downloads\\TaskWEB\\Views\\Home\\Product.cshtml",
+      "TargetPath": "Views\\Home\\Product.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\ASUS\\Downloads\\TaskWEB\\Views\\Product\\Detail.cshtml",
       "TargetPath": "Views\\Product\\Detail.cshtml",
       "FileKind": "mvc"
     },
     {
-      "FilePath": "d:\\Users\\bsi50130\\Downloads\\TaskPertama-master\\Views\\Home\\Index.cshtml",
-      "TargetPath": "Views\\Home\\Index.cshtml",
+      "FilePath": "c:\\Users\\ASUS\\Downloads\\TaskWEB\\Views\\Home\\Search.cshtml",
+      "TargetPath": "Views\\Home\\Search.cshtml",
       "FileKind": "mvc"
     },
     {
-      "FilePath": "d:\\Users\\bsi50130\\Downloads\\TaskPertama-master\\Views\\Home\\Success.cshtml",
+      "FilePath": "c:\\Users\\ASUS\\Downloads\\TaskWEB\\Views\\Home\\Admin.cshtml",
+      "TargetPath": "Views\\Home\\Admin.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\ASUS\\Downloads\\TaskWEB\\Views\\Home\\Editor.cshtml",
+      "TargetPath": "Views\\Home\\Editor.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\ASUS\\Downloads\\TaskWEB\\Views\\Home\\Success.cshtml",
       "TargetPath": "Views\\Home\\Success.cshtml",
       "FileKind": "mvc"
     },
     {
-      "FilePath": "d:\\Users\\bsi50130\\Downloads\\TaskPertama-master\\Views\\Shared\\_ValidationScriptsPartial.cshtml",
-      "TargetPath": "Views\\Shared\\_ValidationScriptsPartial.cshtml",
+      "FilePath": "c:\\Users\\ASUS\\Downloads\\TaskWEB\\Views\\Home\\Index.cshtml",
+      "TargetPath": "Views\\Home\\Index.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\ASUS\\Downloads\\TaskWEB\\Views\\Home\\Cart.cshtml",
+      "TargetPath": "Views\\Home\\Cart.cshtml",
       "FileKind": "mvc"
     }
   ],

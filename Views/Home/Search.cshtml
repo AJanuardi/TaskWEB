@@ -1,4 +1,4 @@
-﻿@{
+@{
     ViewData["Title"] = "Our Valuable Product";
 }
 <div>
@@ -40,14 +40,14 @@ div.desc {
 </style>
 <div class="text-center">
     <h1>@ViewData["Title"]</h1>
-    <p>Many Product that You Can Buy</p>
+    <p>Did You Find Your Favorite?</p>
 </div>
 </head>
-  <form asp-action="Search" asp-controller="Home" method="POST">
+<form asp-action="Search" asp-controller="Home" method="POST">
     <input name="Search" placeholder="Searching your Favorite" style="width: 200px;">
     <input type="submit" class="btn btn-success" id="submit">
   </form>
-  <form asp-action="Product" asp-controller="Home" method="POST">
+<form asp-action="Product" asp-controller="Home" method="POST">
       <label for="sort">Sorting</label>
          <select name = "Sort" id="Sort">
             <option value = "a"selected>Default</option>

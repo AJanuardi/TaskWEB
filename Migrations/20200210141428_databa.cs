@@ -2,7 +2,7 @@
 
 namespace MVC.Migrations
 {
-    public partial class data : Migration
+    public partial class databa : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -38,6 +38,21 @@ namespace MVC.Migrations
                 {
                     table.PrimaryKey("PK_Cookies", x => x.id);
                 });
+
+            migrationBuilder.CreateTable(
+                name: "Users",
+                columns: table => new
+                {
+                    id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    nama = table.Column<string>(nullable: true),
+                    email = table.Column<string>(nullable: true),
+                    password = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Users", x => x.id);
+                });
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -47,6 +62,9 @@ namespace MVC.Migrations
 
             migrationBuilder.DropTable(
                 name: "Cookies");
+
+            migrationBuilder.DropTable(
+                name: "Users");
         }
     }
 }
