@@ -9,6 +9,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
 using MVC.Data;
 
 namespace MVC
@@ -31,6 +32,8 @@ namespace MVC
             {
                 options.UseSqlServer(Configuration.GetConnectionString("localhost"));
             });
+            services.AddMvc(option => option.EnableEndpointRouting = false);
+            services.AddSession();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -48,16 +51,17 @@ namespace MVC
             }
             app.UseHttpsRedirection();
             app.UseStaticFiles();
-
-            app.UseRouting();
+            app.UseSession();
 
             app.UseAuthorization();
 
-            app.UseEndpoints(endpoints =>
+            app.UseStaticFiles();
+
+            app.UseMvc(routes =>
             {
-                endpoints.MapControllerRoute(
+                routes.MapRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    template: "{controller=Home}/{action=Index}/{id?}");
             });
         }
     }

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Users\\bsi50130\\Desktop\\MVC\\MVC.csproj": {}
+    "D:\\Users\\bsi50130\\Downloads\\TaskPertama\\MVC.csproj": {}
   },
   "projects": {
-    "D:\\Users\\bsi50130\\Desktop\\MVC\\MVC.csproj": {
+    "D:\\Users\\bsi50130\\Downloads\\TaskPertama\\MVC.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Users\\bsi50130\\Desktop\\MVC\\MVC.csproj",
+        "projectUniqueName": "D:\\Users\\bsi50130\\Downloads\\TaskPertama\\MVC.csproj",
         "projectName": "MVC",
-        "projectPath": "D:\\Users\\bsi50130\\Desktop\\MVC\\MVC.csproj",
+        "projectPath": "D:\\Users\\bsi50130\\Downloads\\TaskPertama\\MVC.csproj",
         "packagesPath": "D:\\Users\\bsi50130\\.nuget\\packages\\",
-        "outputPath": "D:\\Users\\bsi50130\\Desktop\\MVC\\obj\\",
+        "outputPath": "D:\\Users\\bsi50130\\Downloads\\TaskPertama\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "D:\\Users\\bsi50130\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -36,6 +36,10 @@
       "frameworks": {
         "netcoreapp3.0": {
           "dependencies": {
+            "McMaster.Extensions.CommandLineUtils": {
+              "target": "Package",
+              "version": "[2.5.1, )"
+            },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
               "version": "[3.1.1, )"
@@ -55,6 +59,10 @@
               "suppressParent": "All",
               "target": "Package",
               "version": "[3.1.1, )"
+            },
+            "System.Data.SqlClient": {
+              "target": "Package",
+              "version": "[4.8.0, )"
             }
           },
           "imports": [

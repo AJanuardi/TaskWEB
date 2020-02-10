@@ -24,20 +24,8 @@ namespace MVC.Controllers
 
         public IActionResult Detail(int id)
         {
-            var items = from i in _appDbContext.Cookies where i.id == id select i;
+            var items = from item in _appDbContext.Cookies where item.id == id select item;
             ViewBag.items = items;
-            foreach (var i in items)
-            {
-            var barang = new Cart()
-            {
-                nama = i.nama,
-                harga = i.harga,
-            };
-            _appDbContext.Carts.Add(barang);
-            }
-            
-            _appDbContext.SaveChanges();
-            
             return View("Detail");
         }
 

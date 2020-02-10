@@ -1,0 +1,53 @@
+@model MVC.Models.Cookie
+
+@{
+    Layout = null;
+}
+
+@using Microsoft.AspNetCore.Http;
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Success</title>
+</head>
+<body>
+
+    <h3>Admin Page</h3>
+    Welcome @Context.Session.GetString("username")
+    <form method="post" asp-controller="Home" asp-action="Insert">
+        <table border="0" cellpadding="2" cellspacing="2">
+            <tr>
+                <td>Rating</td>
+                <td><input type="text" name="rating"></td>
+            </tr>
+            <tr>
+                <td>Nama</td>
+                <td><input type="text" name="nama"></td>
+            </tr>
+            <tr>
+                <td>Foto</td>
+                <td><input type="text" name="foto"></td>
+            </tr>
+            <tr>
+                <td>Deskripsi</td>
+                <td><input type="text" name="deskripsi"></td>
+            </tr>
+            <tr>
+                <td>Harga</td>
+                <td><input type="text" name="harga"></td>
+            </tr>
+            <tr>
+                <td>&nbsp;</td>
+                <td><input type="submit" value="Submit"></td>
+            </tr>
+        </table>
+    </form>
+    <br>
+    <a href="https://localhost:5001/Home/List">Delete Data Cookies</a>
+    <a href="https://localhost:5001/Home/Edit">Edit Data Cookies</a>
+
+</body>
+</html>

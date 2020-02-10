@@ -7,6 +7,7 @@ namespace MVC.Data
     {
          public DbSet<Cart> Carts {get; set;}
          public DbSet<Cookie> Cookies {get; set;}
+         public DbSet<User> Users {get; set;}
 
     public AppDbContext(DbContextOptions options) : base (options) 
     {

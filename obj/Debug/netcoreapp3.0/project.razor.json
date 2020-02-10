@@ -14349,6 +14349,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "d:\\Users\\bsi50130\\Downloads\\TaskPertama-master\\Views\\Home\\Admin.cshtml",
+      "TargetPath": "Views\\Home\\Admin.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "d:\\Users\\bsi50130\\Downloads\\TaskPertama-master\\Views\\Shared\\Error.cshtml",
       "TargetPath": "Views\\Shared\\Error.cshtml",
       "FileKind": "mvc"
@@ -14369,8 +14374,23 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "d:\\Users\\bsi50130\\Downloads\\TaskPertama-master\\Views\\Home\\Data.cshtml",
+      "TargetPath": "Views\\Home\\Data.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "d:\\Users\\bsi50130\\Downloads\\TaskPertama-master\\Views\\_ViewStart.cshtml",
       "TargetPath": "Views\\_ViewStart.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "d:\\Users\\bsi50130\\Downloads\\TaskPertama-master\\Views\\Home\\List.cshtml",
+      "TargetPath": "Views\\Home\\List.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "d:\\Users\\bsi50130\\Downloads\\TaskPertama-master\\Views\\Home\\Editor.cshtml",
+      "TargetPath": "Views\\Home\\Editor.cshtml",
       "FileKind": "mvc"
     },
     {
@@ -14381,6 +14401,11 @@
     {
       "FilePath": "d:\\Users\\bsi50130\\Downloads\\TaskPertama-master\\Views\\Home\\Index.cshtml",
       "TargetPath": "Views\\Home\\Index.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "d:\\Users\\bsi50130\\Downloads\\TaskPertama-master\\Views\\Home\\Success.cshtml",
+      "TargetPath": "Views\\Home\\Success.cshtml",
       "FileKind": "mvc"
     },
     {
