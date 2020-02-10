@@ -6,8 +6,10 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using System.Web;
 using MVC.Data;
 using MVC.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace MVC.Controllers
 {
@@ -61,11 +63,27 @@ namespace MVC.Controllers
             _appDbContext.SaveChanges();
             return RedirectToAction("Cart", "Home");
         }
-        public IActionResult Data(string link)
+
+       public ActionResult Editor(int id, int rating, string nama, string foto, string deskripsi, int harga)
         {
-            Console.WriteLine("=============================================================");
-            Console.WriteLine(link);
-            return View();
+            var x = _appDbContext.Cookies.Find(id);
+            x.nama = nama;
+            x.rating = rating;
+            x.foto = foto;
+            x.deskripsi = deskripsi;
+            x.harga = harga;
+            _appDbContext.SaveChanges();
+            return RedirectToAction("Admin", "Home");
+        }
+
+        [HttpPost]
+        public IActionResult Insert(Cookie obj)
+        {
+            Cookie objreg = new Cookie();
+            string result = objreg.InsertCookies(obj);
+            ViewData["result"] = result;
+            ModelState.Clear();
+            return View("Data");
         }
         public IActionResult Delete(int id)
         {
@@ -73,6 +91,27 @@ namespace MVC.Controllers
             _appDbContext.Carts.Remove(Delete);
             _appDbContext.SaveChanges();
             return RedirectToAction("Cart","Home");
+        }
+
+        public IActionResult Edit()
+        {
+            var items = from i in _appDbContext.Cookies select i;
+            ViewBag.items = items;
+            return View("Editor");
+        }
+        public IActionResult List()
+        {
+            var items = from i in _appDbContext.Cookies select i;
+            ViewBag.items = items;
+            return View();
+        }
+
+        public ActionResult Del(int id)
+        {
+            Cookie cookieDetail = _appDbContext.Cookies.Find(id);
+            _appDbContext.Cookies.Remove(cookieDetail);
+            _appDbContext.SaveChanges();
+            return RedirectToAction("Admin","Home");
         }
 
         public IActionResult Admin(string nama, string password)

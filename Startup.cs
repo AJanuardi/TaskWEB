@@ -55,8 +55,6 @@ namespace MVC
 
             app.UseAuthorization();
 
-            app.UseSession();
-
             app.UseStaticFiles();
 
             app.UseMvc(routes =>

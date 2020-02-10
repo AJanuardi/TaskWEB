@@ -1,0 +1,14 @@
+@{
+    Layout = null;
+}
+
+@{
+     var x = ViewBag.items;
+        foreach (var i in x)
+        {
+            @i.nama;
+            @i.rating;
+            @i.harga;
+            <a href="https://localhost:5001/Home/Del/@i.id">Delete Cookie</a> 
+        }
+}

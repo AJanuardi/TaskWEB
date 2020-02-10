@@ -1,3 +1,5 @@
+@model MVC.Models.Cookie
+
 @{
     Layout = null;
 }
@@ -15,7 +17,7 @@
 
     <h3>Admin Page</h3>
     Welcome @Context.Session.GetString("username")
-    <form method="post" asp-controller="Home" asp-action="Data">
+    <form method="post" asp-controller="Home" asp-action="Insert">
         <table border="0" cellpadding="2" cellspacing="2">
             <tr>
                 <td>Rating</td>
@@ -44,6 +46,8 @@
         </table>
     </form>
     <br>
+    <a href="https://localhost:5001/Home/List">Delete Data Cookies</a>
+    <a href="https://localhost:5001/Home/Edit">Edit Data Cookies</a>
 
 </body>
 </html>

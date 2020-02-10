@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\ASUS\\Downloads\\TaskPertama-master\\MVC.csproj": {}
+    "D:\\Users\\bsi50130\\Downloads\\TaskPertama(Berhasil Delete)\\MVC.csproj": {}
   },
   "projects": {
-    "C:\\Users\\ASUS\\Downloads\\TaskPertama-master\\MVC.csproj": {
+    "D:\\Users\\bsi50130\\Downloads\\TaskPertama(Berhasil Delete)\\MVC.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\ASUS\\Downloads\\TaskPertama-master\\MVC.csproj",
+        "projectUniqueName": "D:\\Users\\bsi50130\\Downloads\\TaskPertama(Berhasil Delete)\\MVC.csproj",
         "projectName": "MVC",
-        "projectPath": "C:\\Users\\ASUS\\Downloads\\TaskPertama-master\\MVC.csproj",
-        "packagesPath": "C:\\Users\\ASUS\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\ASUS\\Downloads\\TaskPertama-master\\obj\\",
+        "projectPath": "D:\\Users\\bsi50130\\Downloads\\TaskPertama(Berhasil Delete)\\MVC.csproj",
+        "packagesPath": "D:\\Users\\bsi50130\\.nuget\\packages\\",
+        "outputPath": "D:\\Users\\bsi50130\\Downloads\\TaskPertama(Berhasil Delete)\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\ASUS\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "D:\\Users\\bsi50130\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.0"
@@ -59,6 +59,10 @@
               "suppressParent": "All",
               "target": "Package",
               "version": "[3.1.1, )"
+            },
+            "System.Data.SqlClient": {
+              "target": "Package",
+              "version": "[4.8.0, )"
             }
           },
           "imports": [
@@ -79,7 +83,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.0.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.0.101\\RuntimeIdentifierGraph.json"
         }
       }
     }
