@@ -47,6 +47,7 @@ div.desc {
     <input name="Search" placeholder="Searching your Favorite" style="width: 210px;">
     <input type="submit" class="btn btn-success" id="submit">
   </form>
+  <br>
 <form asp-action="Product" asp-controller="Home" method="POST">
       <label for="sort">Sorting</label>
          <select name = "Sort" id="Sort">
@@ -58,6 +59,7 @@ div.desc {
          </select>
       <input type="submit" class="btn btn-success" value="Submit">
   </form>
+  <br>
   @{
         var x = ViewBag.x;
         foreach (var i in x)

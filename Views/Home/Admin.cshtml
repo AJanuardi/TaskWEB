@@ -2,22 +2,17 @@
     Layout = null;
 }
 
-<!DOCTYPE html>
-
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Index</title>
-</head>
 <body>
-
+    <div class="text-center">
     <h3>Login Page</h3>
     @ViewBag.error
+    </div>
+    <div class="text-center">
     <form method="post" asp-controller="Home" asp-action="Admin">
         <table border="0" cellpadding="2" cellspacing="2">
             <tr>
                 <td>Username</td>
-                <td><input type="text" name="nama"></td>
+                <td><input type="text" name="email"></td>
             </tr>
             <tr>
                 <td>Password</td>
@@ -29,6 +24,7 @@
             </tr>
         </table>
     </form>
+    </div>
     <a href="https://localhost:5001">Back To Home</a>
 
 </body>

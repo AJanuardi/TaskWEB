@@ -161,7 +161,6 @@ namespace MVC.Controllers
             _appDbContext.SaveChanges();
             return RedirectToAction("Cart","Home");
         }
-
         public IActionResult Edit()
         {
             var items = from i in _appDbContext.Cookies select i;
@@ -174,7 +173,6 @@ namespace MVC.Controllers
             ViewBag.items = items;
             return View();
         }
-
         public ActionResult Del(int id)
         {
             Cookie cookieDetail = _appDbContext.Cookies.Find(id);
@@ -183,16 +181,16 @@ namespace MVC.Controllers
             return RedirectToAction("Admin","Home");
         }
 
-        public IActionResult Admin(string nama, string password)
+        public IActionResult Admin(string email, string password)
         {
             var items = from item in _appDbContext.Users select item;
             foreach (var x in items)
             {
-                if (x.nama == nama)
+                if (x.email == email)
                 {
                     if (Convert.ToString(x.password) == password)
                     {
-                        HttpContext.Session.SetString("username", nama);
+                        HttpContext.Session.SetString("username", email);
                         return View("Success");
                     }
                     else

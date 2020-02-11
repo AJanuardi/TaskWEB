@@ -1,14 +1,72 @@
+@model MVC.Models.Cookie
 @{
-    Layout = null;
+    ViewBag.Title = "List";
+}
+<style>
+div.gallery {
+  border: 1px solid #ccc;
 }
 
+div.gallery:hover {
+  border: 1px solid #777;
+}
+
+div.gallery img {
+  width: 100%;
+  height: auto;
+}
+
+div.desc {
+  padding: 15px;
+  text-align: center;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.responsive {
+  padding: 0 6px;
+  float: left;
+  width: 24.99999%;
+}
+
+.clearfix:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+</style>
+
+<h4>Listing</h4>
+<br>
+<form action="https://localhost:5001/Home/Admin">
+    <button type="submit">Turn Back Action</button>
+</form>
+<br>
 @{
      var x = ViewBag.items;
         foreach (var i in x)
         {
-            @i.nama;
-            @i.rating;
-            @i.harga;
-            <a href="https://localhost:5001/Home/Del/@i.id">Delete Cookie</a> 
+            <div class="responsive">
+                <div class="gallery">
+                <a 
+                target="_blank" href="https://localhost:5001/Product/Detail/@i.id">
+                <img src="@i.foto" style="width: 263px; height: 150px;">
+                </a>
+                <div class="desc">
+                    <h6>@i.nama</h6>
+                    <div class="text-right">
+                    <h6>Rp.@i.harga,-</h6>
+                    </div>
+                    <h6>Buy It Now</h6>
+                </div>
+                <br>
+            </div>
+            <form action="https://localhost:5001/Home/Del/@i.id">
+                <button type="submit">Delete Cookies</button>
+            </form>
+            </div>
         }
+        
 }
