@@ -5225,19 +5225,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\ASUS\\.nuget\\packages\\": {}
+    "D:\\Users\\bsi50130\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\ASUS\\Downloads\\TaskWEB\\MVC.csproj",
+      "projectUniqueName": "D:\\Users\\bsi50130\\Downloads\\TaskWEB\\MVC.csproj",
       "projectName": "MVC",
-      "projectPath": "C:\\Users\\ASUS\\Downloads\\TaskWEB\\MVC.csproj",
-      "packagesPath": "C:\\Users\\ASUS\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\ASUS\\Downloads\\TaskWEB\\obj\\",
+      "projectPath": "D:\\Users\\bsi50130\\Downloads\\TaskWEB\\MVC.csproj",
+      "packagesPath": "D:\\Users\\bsi50130\\.nuget\\packages\\",
+      "outputPath": "D:\\Users\\bsi50130\\Downloads\\TaskWEB\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\ASUS\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "D:\\Users\\bsi50130\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp3.0"
@@ -5310,7 +5310,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.0.100\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.0.101\\RuntimeIdentifierGraph.json"
       }
     }
   }

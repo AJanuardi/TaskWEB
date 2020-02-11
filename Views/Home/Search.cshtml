@@ -43,11 +43,11 @@ div.desc {
     <p>Did You Find Your Favorite?</p>
 </div>
 </head>
-<form asp-action="Search" asp-controller="Home" method="POST">
-    <input name="Search" placeholder="Searching your Favorite" style="width: 200px;">
+  <form asp-action="Search" asp-controller="Home" method="POST">
+    <input name="Search" placeholder="Searching your Favorite" style="width: 210px;">
     <input type="submit" class="btn btn-success" id="submit">
   </form>
-<form asp-action="Product" asp-controller="Home" method="POST">
+  <form asp-action="Product" asp-controller="Home" method="POST">
       <label for="sort">Sorting</label>
          <select name = "Sort" id="Sort">
             <option value = "a"selected>Default</option>
@@ -66,7 +66,7 @@ div.desc {
                 <div class="gallery">
                 <a 
                 target="_blank" href="https://localhost:5001/Product/Detail/@i.id">
-                <img src="@i.foto" width="800" height="600">
+                <img src="@i.foto" style="width: 263px; height: 150px;">
                 </a>
                 <div class="desc">
                     <h6>@i.nama</h6>
@@ -78,5 +78,20 @@ div.desc {
             </div>
         </div> 
         }   
+}
+@{
+<div class="text-center">
+  <form asp-action="Link" asp-controller="Home" method="POST">
+      <label for="link">Access Your Page to Find Your Favorite</label>
+         <select name = "link" id="link">
+            <option value = "a"selected>Page 1</option>
+            <option value = "b">Page 2</option>
+            <option value = "c">Page 3</option>
+            <option value = "d">Page 4</option>
+            <option value = "e">Page 5</option>
+         </select>
+      <input type="submit" class="btn btn-success" value="Submit">
+  </form>
+</div>
 }
 </div>

@@ -1,9 +1,5 @@
-@{
-    ViewData["Title"] = "Our Valuable Product";
-}
-<div>
-<head>
 <style>
+
 div.gallery {
   border: 1px solid #ccc;
 }
@@ -39,15 +35,14 @@ div.desc {
 }
 </style>
 <div class="text-center">
-    <h1>@ViewData["Title"]</h1>
-    <p>Did You Find Your Favorite?</p>
+    <h1>Our Valuable Product</h1>
+    <p>Many Product that You Can Buy</p>
 </div>
-</head>
-<form asp-action="Search" asp-controller="Home" method="POST">
+    <form asp-action="Search" asp-controller="Home" method="POST">
     <input name="Search" placeholder="Searching your Favorite" style="width: 210px;">
     <input type="submit" class="btn btn-success" id="submit">
   </form>
-<form asp-action="Product" asp-controller="Home" method="POST">
+  <form asp-action="Product" asp-controller="Home" method="POST">
       <label for="sort">Sorting</label>
          <select name = "Sort" id="Sort">
             <option value = "a"selected>Default</option>
@@ -58,8 +53,8 @@ div.desc {
          </select>
       <input type="submit" class="btn btn-success" value="Submit">
   </form>
-  @{
-        var x = ViewBag.x;
+@{
+        var x = ViewBag.items;
         foreach (var i in x)
         {
             <div class="responsive">
@@ -94,4 +89,3 @@ div.desc {
   </form>
 </div>
 }
-</div>

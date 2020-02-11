@@ -2,7 +2,7 @@
 
 namespace MVC.Migrations
 {
-    public partial class databa : Migration
+    public partial class datafix : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

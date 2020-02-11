@@ -32,34 +32,59 @@ namespace MVC.Controllers
             ViewBag.items = items;
             return View();
         }
+        public IActionResult Link(string link)
+        {
+            if (link == "b")
+            {
+                var items = from i in _appDbContext.Cookies.Skip(4).Take(4) select i;
+                ViewBag.items = items;
+                return View("Link", "Home");
+            }
+            else if (link == "c")
+            {
+                var items = from i in _appDbContext.Cookies.Skip(8).Take(4) select i;
+                ViewBag.items = items;
+                return View("Link", "Home");
+            }
+             else if (link == "d")
+            {
+                var items = from i in _appDbContext.Cookies.Skip(12).Take(4) select i;
+                ViewBag.items = items;
+                return View("Link", "Home");
+            }
+             else
+            {
+                var items = _appDbContext.Cookies.Take(4);
+                ViewBag.items = items;
+                return View("Link", "Home");
+            }
+        }
 
         public IActionResult Product(string sort)
         {
-            var items = from i in _appDbContext.Cookies select i;
+            var items = from i in _appDbContext.Cookies.Take(4) select i;
             ViewBag.items = items;
-            System.Console.WriteLine("=========================");
-            System.Console.WriteLine(sort);
             if (sort == "a")
             {
-                var x = from i in _appDbContext.Cookies select i;
+                var x = from i in _appDbContext.Cookies.Take(4) select i;
                 ViewBag.x = x;
                 return View("Indexing","Home"); 
             }
             else if (sort == "b")
             {
-                var x = _appDbContext.Cookies.OrderBy(x => x.nama);
+                var x = _appDbContext.Cookies.OrderBy(x => x.nama).Take(4);
                 ViewBag.x = x;
                 return View("Indexing","Home");
             }
             else if (sort == "c")
             {
-                var x = _appDbContext.Cookies.OrderByDescending(x => x.nama);
+                var x = _appDbContext.Cookies.OrderByDescending(x => x.nama).Take(4);
                 ViewBag.x = x;
                 return View("Indexing","Home");
             }
             else if (sort == "d")
             {
-                var x = _appDbContext.Cookies.OrderBy(x => x.harga);
+                var x = _appDbContext.Cookies.OrderBy(x => x.harga).Take(4);
                 ViewBag.x = x;
                 return View("Indexing","Home");
             }
@@ -67,7 +92,7 @@ namespace MVC.Controllers
             {
                 System.Console.WriteLine("===========================================");
                 System.Console.WriteLine(sort);
-                var x = _appDbContext.Cookies.OrderByDescending(x => x.harga);
+                var x = _appDbContext.Cookies.OrderByDescending(x => x.harga).Take(4);
                 ViewBag.x = x;
                 return View("Indexing", "Home");
             }
