@@ -47,10 +47,11 @@ div.desc {
     <input name="Search" placeholder="Searching your Favorite" style="width: 210px;">
     <input type="submit" class="btn btn-success" id="submit">
   </form>
+  <br>
   <form asp-action="Product" asp-controller="Home" method="POST">
       <label for="sort">Sorting</label>
          <select name = "Sort" id="Sort">
-            <option value = "a"selected>Default</option>
+            <option value = "a">Default</option>
             <option value = "b">Name Ascending</option>
             <option value = "c">Name Descending</option>
             <option value = "d">Price Ascending</option>
@@ -58,6 +59,7 @@ div.desc {
          </select>
       <input type="submit" class="btn btn-success" value="Submit">
   </form>
+  <br>
   @{
         var x = ViewBag.items;
         foreach (var i in x)
@@ -84,7 +86,7 @@ div.desc {
   <form asp-action="Link" asp-controller="Home" method="POST">
       <label for="link">Access Your Page to Find Your Favorite</label>
          <select name = "link" id="link">
-            <option value = "a"selected>Page 1</option>
+            <option value = "a">Page 1</option>
             <option value = "b">Page 2</option>
             <option value = "c">Page 3</option>
             <option value = "d">Page 4</option>
