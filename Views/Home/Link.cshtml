@@ -55,6 +55,16 @@ div.desc {
       <input type="submit" class="btn btn-success" value="Submit">
   </form>
   <br>
+  <form asp-action="Link" asp-controller="Home" method="POST">
+      <label for="quantity">Quantity</label>
+         <select name = "quantity" id="quantity">
+            <option value = "3">3</option>
+            <option value = "4" selected>4</option>
+            <option value = "5">5</option>
+         </select>
+      <input type="submit" class="btn btn-success" value="Submit">
+  </form>
+  <br>
 @{
         var x = ViewBag.items;
         foreach (var i in x)

@@ -32,29 +32,33 @@ namespace MVC.Controllers
             ViewBag.items = items;
             return View();
         }
-        public IActionResult Link(string link)
+        public IActionResult Link(string quantity,string link)
         {
+            int quan = Convert.ToInt32(quantity);
+            Console.WriteLine("=============================");
+            Console.WriteLine(quantity);
+            Console.WriteLine(link);
             if (link == "b")
             {
-                var items = from i in _appDbContext.Cookies.Skip(4).Take(4) select i;
+                var items = from i in _appDbContext.Cookies.Skip(quan).Take(quan) select i;
                 ViewBag.items = items;
                 return View("Link", "Home");
             }
             else if (link == "c")
             {
-                var items = from i in _appDbContext.Cookies.Skip(8).Take(4) select i;
+                var items = from i in _appDbContext.Cookies.Skip((quan*2)).Take(quan) select i;
                 ViewBag.items = items;
                 return View("Link", "Home");
             }
              else if (link == "d")
             {
-                var items = from i in _appDbContext.Cookies.Skip(12).Take(4) select i;
+                var items = from i in _appDbContext.Cookies.Skip(quan*3).Take(quan) select i;
                 ViewBag.items = items;
                 return View("Link", "Home");
             }
              else
             {
-                var items = _appDbContext.Cookies.Take(4);
+                var items = _appDbContext.Cookies.Take(quan);
                 ViewBag.items = items;
                 return View("Link", "Home");
             }
