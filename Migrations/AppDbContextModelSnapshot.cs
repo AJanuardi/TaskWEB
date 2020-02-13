@@ -69,6 +69,27 @@ namespace MVC.Migrations
                     b.ToTable("Cookies");
                 });
 
+            modelBuilder.Entity("MVC.Models.Purchase", b =>
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("email")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("nama")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("totalHarga")
+                        .HasColumnType("int");
+
+                    b.HasKey("id");
+
+                    b.ToTable("Purchases");
+                });
+
             modelBuilder.Entity("MVC.Models.User", b =>
                 {
                     b.Property<int>("id")

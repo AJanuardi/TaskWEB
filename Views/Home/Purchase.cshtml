@@ -1,0 +1,11 @@
+@{
+    var x = ViewBag.harga;
+    var y = ViewBag.items;
+    <div class="text-center">
+    <h3>Buying List</h3>
+    </div>
+    foreach(var i in y)
+    {
+        <h5>@i.nama</h5>
+    }
+}

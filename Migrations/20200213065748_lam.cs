@@ -2,7 +2,7 @@
 
 namespace MVC.Migrations
 {
-    public partial class datafix : Migration
+    public partial class lam : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -40,6 +40,21 @@ namespace MVC.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Purchases",
+                columns: table => new
+                {
+                    id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    nama = table.Column<string>(nullable: true),
+                    email = table.Column<string>(nullable: true),
+                    totalHarga = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Purchases", x => x.id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Users",
                 columns: table => new
                 {
@@ -62,6 +77,9 @@ namespace MVC.Migrations
 
             migrationBuilder.DropTable(
                 name: "Cookies");
+
+            migrationBuilder.DropTable(
+                name: "Purchases");
 
             migrationBuilder.DropTable(
                 name: "Users");

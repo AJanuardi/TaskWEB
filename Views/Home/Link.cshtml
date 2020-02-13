@@ -55,16 +55,9 @@ div.desc {
       <input type="submit" class="btn btn-success" value="Submit">
   </form>
   <br>
-  <form asp-action="Link" asp-controller="Home" method="POST">
-      <label for="quantity">Quantity</label>
-         <select name = "quantity" id="quantity">
-            <option value = "3">3</option>
-            <option value = "4" selected>4</option>
-            <option value = "5">5</option>
-         </select>
-      <input type="submit" class="btn btn-success" value="Submit">
-  </form>
-  <br>
+  <div class="text-center">
+</div>
+<br>
 @{
         var x = ViewBag.items;
         foreach (var i in x)
@@ -86,12 +79,11 @@ div.desc {
         </div> 
         }   
 }
-@{
 <div class="text-center">
   <form asp-action="Link" asp-controller="Home" method="POST">
       <label for="link">Access Your Page to Find Your Favorite</label>
          <select name = "link" id="link">
-            <option value = "a"selected>Page 1</option>
+            <option value = "a" selected>Page 1</option>
             <option value = "b">Page 2</option>
             <option value = "c">Page 3</option>
             <option value = "d">Page 4</option>
@@ -99,5 +91,3 @@ div.desc {
          </select>
       <input type="submit" class="btn btn-success" value="Submit">
   </form>
-</div>
-}

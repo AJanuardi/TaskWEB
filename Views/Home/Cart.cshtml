@@ -15,11 +15,20 @@
                 <input type="text" id="jumlah-@i.id" name="jumlah item" placeholder="Quantity" value="">
                 <input id="price-@i.id" style="width: 25%" value=@i.harga hidden>
                 <input id="subtotal-@i.id" name="jumlah" style="width: 25%"hidden>
-                <button class="btn btn-primary" id="a-@i.id" onclick="javascript: calculate(this)">update</button>
-                <button class="btn btn-danger" id="b-@i.id" onclick="javascript: removeElement(this)">remove</button>
+                <button class="btn btn-primary" id="a-@i.id" onclick="javascript: calculate(this)">Update</button>
+                <button class="btn btn-danger" id="b-@i.id" onclick="javascript: removeElement(this)">Remove</button>
             </div>
         }
-        <input id="jumlah_harga">
+        
+        <div class="text-center">
+        <form asp-action="Cart" asp-controller="Home" method="POST">
+            Total Belanja:
+            <br>
+            <input type="text" id="jumlah_harga">
+            <br>
+            <input type="submit" class="btn btn-success" id="submit">
+        </form>
+        </div> 
 }      
 <script type="text/javascript">
 function calculate(id)

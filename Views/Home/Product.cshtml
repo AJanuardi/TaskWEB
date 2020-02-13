@@ -43,9 +43,15 @@ div.desc {
     <p>Many Product that You Can Buy</p>
 </div>
 </head>
+  <button id="btn" type="button" class="btn btn-primary" value="update" onclick="location.href='/Product/Export'">Export</button>
   <form asp-action="Search" asp-controller="Home" method="POST">
     <input name="Search" placeholder="Searching your Favorite" style="width: 210px;">
     <input type="submit" class="btn btn-success" id="submit">
+  </form>
+  <br>
+  <form asp-action="Import" asp-controller="Product" enctype="multipart/form-data">
+  <input  type="file" id="Upload" name="Upload" value="Upload">
+  <button type="submit" class="btn btn-success">Import</button>
   </form>
   <br>
   <form asp-action="Product" asp-controller="Home" method="POST">
@@ -60,15 +66,6 @@ div.desc {
       <input type="submit" class="btn btn-success" value="Submit">
   </form>
   <br>
-  <form asp-action="Link" asp-controller="Home" method="POST">
-      <label for="quantity">Quantity</label>
-         <select name = "quantity" id="quantity">
-            <option value = "3">3</option>
-            <option value = "4" selected>4</option>
-            <option value = "5">5</option>
-         </select>
-      <input type="submit" class="btn btn-success" value="Submit">
-  </form>
   <br>
   @{
         var x = ViewBag.items;

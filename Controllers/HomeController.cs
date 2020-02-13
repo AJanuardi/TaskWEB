@@ -32,33 +32,31 @@ namespace MVC.Controllers
             ViewBag.items = items;
             return View();
         }
-        public IActionResult Link(string quantity,string link)
+        public IActionResult Link(string link)
         {
-            int quan = Convert.ToInt32(quantity);
-            Console.WriteLine("=============================");
-            Console.WriteLine(quantity);
+
             Console.WriteLine(link);
             if (link == "b")
             {
-                var items = from i in _appDbContext.Cookies.Skip(quan).Take(quan) select i;
+                var items = from i in _appDbContext.Cookies.Skip(4).Take(4) select i;
                 ViewBag.items = items;
                 return View("Link", "Home");
             }
             else if (link == "c")
             {
-                var items = from i in _appDbContext.Cookies.Skip((quan*2)).Take(quan) select i;
+                var items = from i in _appDbContext.Cookies.Skip((8)).Take(4) select i;
                 ViewBag.items = items;
                 return View("Link", "Home");
             }
              else if (link == "d")
             {
-                var items = from i in _appDbContext.Cookies.Skip(quan*3).Take(quan) select i;
+                var items = from i in _appDbContext.Cookies.Skip(12).Take(4) select i;
                 ViewBag.items = items;
                 return View("Link", "Home");
             }
              else
             {
-                var items = _appDbContext.Cookies.Take(quan);
+                var items = _appDbContext.Cookies.Take(4);
                 ViewBag.items = items;
                 return View("Link", "Home");
             }
@@ -149,21 +147,32 @@ namespace MVC.Controllers
             return RedirectToAction("Admin", "Home");
         }
 
-        [HttpPost]
-        public IActionResult Insert(Cookie obj)
-        {
-            Cookie objreg = new Cookie();
-            string result = objreg.InsertCookies(obj);
-            ViewData["result"] = result;
-            ModelState.Clear();
-            return View("Data");
-        }
+        // [HttpPost]
+        // public IActionResult Insert(Cookie obj)
+        // {
+        //     Cookie objreg = new Cookie();
+        //     string result = objreg.InsertCookies(obj);
+        //     ViewData["result"] = result;
+        //     ModelState.Clear();
+        //     return View("Data");
+        // }
         public IActionResult Delete(int id)
         {
             var Delete = _appDbContext.Carts.Find(id);
             _appDbContext.Carts.Remove(Delete);
             _appDbContext.SaveChanges();
             return RedirectToAction("Cart","Home");
+        }
+
+        public IActionResult Purchase(int total)
+        {
+            Console.WriteLine("==================================");
+            Console.WriteLine(total);
+            var x = Convert.ToInt32(total);
+            ViewBag.harga = x;
+            var items = from i in _appDbContext.Cookies select i;
+            ViewBag.items = items;
+            return View("Purchase");
         }
         public IActionResult Edit()
         {

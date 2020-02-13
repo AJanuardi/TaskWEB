@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MVC.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20200211014308_datafix")]
-    partial class datafix
+    [Migration("20200213065748_lam")]
+    partial class lam
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -69,6 +69,27 @@ namespace MVC.Migrations
                     b.HasKey("id");
 
                     b.ToTable("Cookies");
+                });
+
+            modelBuilder.Entity("MVC.Models.Purchase", b =>
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("email")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("nama")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("totalHarga")
+                        .HasColumnType("int");
+
+                    b.HasKey("id");
+
+                    b.ToTable("Purchases");
                 });
 
             modelBuilder.Entity("MVC.Models.User", b =>
