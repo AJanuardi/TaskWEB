@@ -28,12 +28,6 @@ namespace MVC.Migrations
                     b.Property<int>("harga")
                         .HasColumnType("int");
 
-                    b.Property<int>("jumlah")
-                        .HasColumnType("int");
-
-                    b.Property<int>("jumlahItem")
-                        .HasColumnType("int");
-
                     b.Property<string>("nama")
                         .HasColumnType("nvarchar(max)");
 
@@ -67,6 +61,21 @@ namespace MVC.Migrations
                     b.HasKey("id");
 
                     b.ToTable("Cookies");
+                });
+
+            modelBuilder.Entity("MVC.Models.Transaction", b =>
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("jumlahHarga")
+                        .HasColumnType("int");
+
+                    b.HasKey("id");
+
+                    b.ToTable("Transactions");
                 });
 
             modelBuilder.Entity("MVC.Models.User", b =>

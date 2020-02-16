@@ -2,7 +2,7 @@
 
 namespace MVC.Migrations
 {
-    public partial class databa : Migration
+    public partial class fix : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -13,9 +13,7 @@ namespace MVC.Migrations
                     id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     nama = table.Column<string>(nullable: true),
-                    harga = table.Column<int>(nullable: false),
-                    jumlahItem = table.Column<int>(nullable: false),
-                    jumlah = table.Column<int>(nullable: false)
+                    harga = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -37,6 +35,19 @@ namespace MVC.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Cookies", x => x.id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Transactions",
+                columns: table => new
+                {
+                    id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    jumlahHarga = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Transactions", x => x.id);
                 });
 
             migrationBuilder.CreateTable(
@@ -62,6 +73,9 @@ namespace MVC.Migrations
 
             migrationBuilder.DropTable(
                 name: "Cookies");
+
+            migrationBuilder.DropTable(
+                name: "Transactions");
 
             migrationBuilder.DropTable(
                 name: "Users");

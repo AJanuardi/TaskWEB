@@ -7,7 +7,5 @@ namespace MVC.Models
         public int id {get;set;}
         public string nama {get; set;}
         public int harga {get;set;}
-        public int jumlahItem {get; set;}
-        public int jumlah {get; set;}
     }
 }

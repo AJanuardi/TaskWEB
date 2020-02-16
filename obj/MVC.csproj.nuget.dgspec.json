@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\ASUS\\Downloads\\TaskWEB\\MVC.csproj": {}
+    "C:\\Users\\ASUS\\TaskWEB\\MVC.csproj": {}
   },
   "projects": {
-    "C:\\Users\\ASUS\\Downloads\\TaskWEB\\MVC.csproj": {
+    "C:\\Users\\ASUS\\TaskWEB\\MVC.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\ASUS\\Downloads\\TaskWEB\\MVC.csproj",
+        "projectUniqueName": "C:\\Users\\ASUS\\TaskWEB\\MVC.csproj",
         "projectName": "MVC",
-        "projectPath": "C:\\Users\\ASUS\\Downloads\\TaskWEB\\MVC.csproj",
+        "projectPath": "C:\\Users\\ASUS\\TaskWEB\\MVC.csproj",
         "packagesPath": "C:\\Users\\ASUS\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\ASUS\\Downloads\\TaskWEB\\obj\\",
+        "outputPath": "C:\\Users\\ASUS\\TaskWEB\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\ASUS\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -40,6 +40,14 @@
               "target": "Package",
               "version": "[2.5.1, )"
             },
+            "Microsoft.AspNetCore.Authentication.JwtBearer": {
+              "target": "Package",
+              "version": "[3.0.0, )"
+            },
+            "Microsoft.AspNetCore.Mvc.NewtonsoftJson": {
+              "target": "Package",
+              "version": "[3.0.0, )"
+            },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
               "version": "[3.1.1, )"
@@ -60,9 +68,17 @@
               "target": "Package",
               "version": "[3.1.1, )"
             },
+            "Microsoft.IdentityModel.Tokens": {
+              "target": "Package",
+              "version": "[5.6.0, )"
+            },
             "Newtonsoft.Json": {
               "target": "Package",
               "version": "[12.0.3, )"
+            },
+            "Stripe.net": {
+              "target": "Package",
+              "version": "[34.22.0, )"
             },
             "System.Data.SqlClient": {
               "target": "Package",

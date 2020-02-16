@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MVC.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20200210141428_databa")]
-    partial class databa
+    [Migration("20200216023236_fix")]
+    partial class fix
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -28,12 +28,6 @@ namespace MVC.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<int>("harga")
-                        .HasColumnType("int");
-
-                    b.Property<int>("jumlah")
-                        .HasColumnType("int");
-
-                    b.Property<int>("jumlahItem")
                         .HasColumnType("int");
 
                     b.Property<string>("nama")
@@ -69,6 +63,21 @@ namespace MVC.Migrations
                     b.HasKey("id");
 
                     b.ToTable("Cookies");
+                });
+
+            modelBuilder.Entity("MVC.Models.Transaction", b =>
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("jumlahHarga")
+                        .HasColumnType("int");
+
+                    b.HasKey("id");
+
+                    b.ToTable("Transactions");
                 });
 
             modelBuilder.Entity("MVC.Models.User", b =>

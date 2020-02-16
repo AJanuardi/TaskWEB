@@ -15,11 +15,12 @@
                 <input type="text" id="jumlah-@i.id" name="jumlah item" placeholder="Jumlah Item" value="">
                 <input id="price-@i.id" style="width: 25%" value=@i.harga hidden>
                 <input id="subtotal-@i.id" name="jumlah" style="width: 25%"hidden>
-                <button class="btn btn-primary" id="a-@i.id" onclick="javascript: calculate(this)">update</button>
-                <button class="btn btn-danger" id="b-@i.id" onclick="javascript: removeElement(this)">remove</button>
+                <button class="btn btn-primary" id="a-@i.id" onclick="javascript: calculate(this)">Update</button>
+                <button class="btn btn-danger" id="b-@i.id" onclick="javascript: removeElement(this)">Remove</button>
             </div>
         }
         <input id="jumlah_harga">
+        <button class="btn btn-success" id="c" onclick="javascript: calculate(this)">Payment</button>
 }      
 <script type="text/javascript">
 function calculate(id)
@@ -44,6 +45,7 @@ function calculate(id)
     }
     document.getElementById(subtotalid).value = subtotal;
     document.getElementById('jumlah_harga').value = total;
+    location.href = '/Home/Charge?total='+total;
 }
 function removeElement(id) 
 {

@@ -11,6 +11,9 @@ using MVC.Data;
 using MVC.Models;
 using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
+using System.IdentityModel.Tokens.Jwt;
+using Microsoft.AspNetCore.Authorization;
+using Stripe;
 
 namespace MVC.Controllers
 {
@@ -25,7 +28,7 @@ namespace MVC.Controllers
             _logger = logger;
             _appDbContext = appDbContext;
         }
-
+        
         public IActionResult Index()
         {
             var items = from i in _appDbContext.Cookies select i;
@@ -37,41 +40,7 @@ namespace MVC.Controllers
         {
             var items = from i in _appDbContext.Cookies select i;
             ViewBag.items = items;
-            System.Console.WriteLine("=========================");
-            System.Console.WriteLine(sort);
-            if (sort == "a")
-            {
-                var x = from i in _appDbContext.Cookies select i;
-                ViewBag.x = x;
-                return View("Indexing","Home"); 
-            }
-            else if (sort == "b")
-            {
-                var x = _appDbContext.Cookies.OrderBy(x => x.nama);
-                ViewBag.x = x;
-                return View("Indexing","Home");
-            }
-            else if (sort == "c")
-            {
-                var x = _appDbContext.Cookies.OrderByDescending(x => x.nama);
-                ViewBag.x = x;
-                return View("Indexing","Home");
-            }
-            else if (sort == "d")
-            {
-                var x = _appDbContext.Cookies.OrderBy(x => x.harga);
-                ViewBag.x = x;
-                return View("Indexing","Home");
-            }
-            else if (sort == "e")
-            {
-                System.Console.WriteLine("===========================================");
-                System.Console.WriteLine(sort);
-                var x = _appDbContext.Cookies.OrderByDescending(x => x.harga);
-                ViewBag.x = x;
-                return View("Indexing", "Home");
-            }
-            return View ("Product", "Home");
+            return View();
         }
 
         public IActionResult Cart()
@@ -80,16 +49,50 @@ namespace MVC.Controllers
             ViewBag.items = items;
             return View();
         }
-        public IActionResult Search(string Search)
+
+        public IActionResult Charge(int total)
         {
-            System.Console.WriteLine("======================================");
-            System.Console.WriteLine(Search);
-            var items = from i in _appDbContext.Cookies where (i.nama.Contains(Search) || i.deskripsi.Contains(Search)) select i;
-            ViewBag.items = items;
-            System.Console.WriteLine("======================================");
-            System.Console.WriteLine(items);
-            return View("Search", "Home");
+            System.Console.WriteLine("==========================================");
+            System.Console.WriteLine(total);
+            Transaction harga = new Transaction()
+            {
+                jumlahHarga = total
+            };
+            _appDbContext.Transactions.Add(harga);
+            _appDbContext.SaveChanges();
+            return View("Purchase");
         }
+
+        public IActionResult Purchase(string stripeEmail, string stripeToken)
+        {
+            var customer = new CustomerService();
+            var charges = new ChargeService();
+            var customers = customer.Create(new CustomerCreateOptions{
+                Email = stripeEmail,
+                Source = stripeToken
+            });
+            var x = from i in _appDbContext.Transactions select i;
+            foreach (var i in x)
+            {
+            var charge = charges.Create(new ChargeCreateOptions{
+                Amount = i.jumlahHarga,
+                Description = "Test Payment",
+                Currency = "usd",
+                Customer = customers.Id
+            });
+            if (charge.Status == "succeeded")
+            {
+                string BalanceTransactionId = charge.BalanceTransactionId;
+                return View();
+            }
+            else
+            {
+                
+            }
+            }
+            return View();
+        }
+
         public IActionResult Add(int id)
         {
             var items = from i in _appDbContext.Cookies where i.id == id select i;
@@ -108,84 +111,12 @@ namespace MVC.Controllers
             return RedirectToAction("Cart", "Home");
         }
 
-       public ActionResult Editor(int id, int rating, string nama, string foto, string deskripsi, int harga)
-        {
-            var x = _appDbContext.Cookies.Find(id);
-            x.nama = nama;
-            x.rating = rating;
-            x.foto = foto;
-            x.deskripsi = deskripsi;
-            x.harga = harga;
-            _appDbContext.SaveChanges();
-            return RedirectToAction("Admin", "Home");
-        }
-
-        [HttpPost]
-        public IActionResult Insert(Cookie obj)
-        {
-            Cookie objreg = new Cookie();
-            string result = objreg.InsertCookies(obj);
-            ViewData["result"] = result;
-            ModelState.Clear();
-            return View("Data");
-        }
         public IActionResult Delete(int id)
         {
             var Delete = _appDbContext.Carts.Find(id);
             _appDbContext.Carts.Remove(Delete);
             _appDbContext.SaveChanges();
             return RedirectToAction("Cart","Home");
-        }
-
-        public IActionResult Edit()
-        {
-            var items = from i in _appDbContext.Cookies select i;
-            ViewBag.items = items;
-            return View("Editor");
-        }
-        public IActionResult List()
-        {
-            var items = from i in _appDbContext.Cookies select i;
-            ViewBag.items = items;
-            return View();
-        }
-
-        public ActionResult Del(int id)
-        {
-            Cookie cookieDetail = _appDbContext.Cookies.Find(id);
-            _appDbContext.Cookies.Remove(cookieDetail);
-            _appDbContext.SaveChanges();
-            return RedirectToAction("Admin","Home");
-        }
-
-        public IActionResult Admin(string nama, string password)
-        {
-            var items = from item in _appDbContext.Users select item;
-            foreach (var x in items)
-            {
-                if (x.nama == nama)
-                {
-                    if (Convert.ToString(x.password) == password)
-                    {
-                        HttpContext.Session.SetString("username", nama);
-                        return View("Success");
-                    }
-                    else
-                    {
-                        ViewBag.error = "Invalid Password";
-                    }
-                }
-                else
-                {
-                    ViewBag.error = "Invalid Username";
-                }
-            }
-            return View();
-        }
-        public IActionResult Logout()
-        {
-            HttpContext.Session.Remove("username");
-            return RedirectToAction("Admin");
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
