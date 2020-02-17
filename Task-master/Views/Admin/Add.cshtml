@@ -1,0 +1,30 @@
+@model MVC.Models.Cookie
+<h2>Add Cookies Data</h2>
+
+<form class="form-style" asp-action="Data" asp-controller="Admin" method="post">
+                <br>
+                <input  id="Rating" type="text" value="" name="Rating" placeholder="  Rating">
+                <br>
+                <br>
+                <input  id="Nama" type="text" value="" name="Nama"  placeholder="  Nama">
+                <br>
+                <br>
+                <input  id="Foto" type="text" value="" name="Foto"  placeholder="  Foto">
+                <br>
+                <br>
+                <input  id="Deskripsi" type="text" value="" name="Deskripsi"  placeholder="  Deskripsi">
+                <br>
+                <br>
+                <input  id="Harga" type="text" value="" name="Harga"  placeholder="  Harga">
+                <br>
+                <br>
+                <button id="button" type="submit" class="btn btn-primary" value="update" onclick="javascript:Add(this)">Add Product</button><br><br>
+</form>
+<script type="text/javascript">
+function Add(buttonSubmit)
+    var Rating = document.getElementById("Rating").value;
+    var Nama = document.getElementById("Nama").value;
+    var Foto = document.getElementById("Foto").value;
+    var Deskripsi = document.getElementById("Deskripsi").value;
+    var Harga = document.getElementById("Harga").value;
+</script>

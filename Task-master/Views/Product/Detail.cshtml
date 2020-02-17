@@ -1,0 +1,26 @@
+@{
+    ViewData["Title"] = "Our Product";
+}
+<h2>@ViewData["Title"]</h2>
+
+<p>Is Your Favorite Isn't?</p>
+
+<div class="text-center">
+@{
+        
+        var x = ViewBag.items;
+        foreach (var i in x)
+        {
+            <div>
+                <h6>@i.nama</h6>
+                <div>
+                <img src=@i.foto width="200px">
+                </div>
+                @i.deskripsi
+                <h6>Rating: @i.rating</h6>
+                <h6>Harga: Rp.@i.harga</h6>
+                <a href="https://localhost:5001/Home/Add/1">Buy it Now</a>             
+            </div> 
+        }
+}
+</div>
