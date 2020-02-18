@@ -212,6 +212,21 @@ namespace MVC.Controllers
                         return RedirectToAction("Data", "Admin");
         }
 
+        [Authorize]
+        public IActionResult Transaction()
+        {
+            var x = from i in _appDbContext.Transactions select i;
+            ViewBag.items = x;
+            return View("Transaction", "Admin");
+        }
+
+        [Authorize]
+        public IActionResult Logout()
+        {
+            HttpContext.Session.Remove("JWTToken");
+            return RedirectToAction("Product","Home");   
+        }
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {

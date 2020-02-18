@@ -2,7 +2,7 @@
 
 namespace MVC.Migrations
 {
-    public partial class datafixpakebangetnihyobromul : Migration
+    public partial class datafixpakebangetnihyobromulsipnih : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -40,29 +40,16 @@ namespace MVC.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Totals",
-                columns: table => new
-                {
-                    id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    total = table.Column<int>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Totals", x => x.id);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Transactions",
                 columns: table => new
                 {
                     id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    konsumen = table.Column<string>(nullable: true),
-                    alamat = table.Column<string>(nullable: true),
-                    Province = table.Column<string>(nullable: true),
-                    PostalCode = table.Column<int>(nullable: true),
-                    totalBelanja = table.Column<int>(nullable: false)
+                    name = table.Column<string>(nullable: true),
+                    address = table.Column<string>(nullable: true),
+                    phone = table.Column<string>(nullable: true),
+                    email = table.Column<string>(nullable: true),
+                    total = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -92,9 +79,6 @@ namespace MVC.Migrations
 
             migrationBuilder.DropTable(
                 name: "Cookies");
-
-            migrationBuilder.DropTable(
-                name: "Totals");
 
             migrationBuilder.DropTable(
                 name: "Transactions");

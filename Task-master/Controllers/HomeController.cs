@@ -36,11 +36,51 @@ namespace MVC.Controllers
             return View();
         }
 
-        public IActionResult Product(string sort)
+        public IActionResult Product(int Sort,int? page,int PerPage,string Search = "")
         {
-            var items = from i in _appDbContext.Cookies select i;
-            ViewBag.items = items;
-            return View();
+
+            ViewBag.Sort = Sort;
+            ViewBag.Search = Search;
+            ViewBag.PerPage = PerPage;
+
+            if(!String.IsNullOrEmpty(Search))
+            {
+               var item = from l in _appDbContext.Cookies where l.nama.Contains(Search) || l.deskripsi.Contains(Search) select l;
+               var pager = new Pager(item.Count(), page);
+               var viewModel = new IndexViewModel
+                {
+                    Cookies = item.Skip((pager.CurrentPage - 1) * pager.PageSize).Take(pager.PageSize),
+                    Pager = pager
+                };
+                return View(viewModel);
+            }
+            if(Sort != 0)
+            {
+                var x = Sorting(Sort,page);
+                return View(x);
+            }
+            if(PerPage != 0)
+            {
+                var item = from l in _appDbContext.Cookies select l;
+                var pager = new Pager(item.Count(),page,PerPage);
+                var viewModel = new IndexViewModel
+                {
+                    Cookies = item.Skip((pager.CurrentPage - 1) * pager.PageSize).Take(pager.PageSize),
+                    Pager = pager
+                };
+                return View(viewModel);
+            }
+            else
+            {
+               var item = from l in _appDbContext.Cookies select l;
+               var pager = new Pager(item.Count(), page);
+               var viewModel = new IndexViewModel
+                {
+                    Cookies = item.Skip((pager.CurrentPage - 1) * pager.PageSize).Take(pager.PageSize),
+                    Pager = pager
+                };
+                return View(viewModel);
+            }       
         }
 
         public IActionResult Cart()
@@ -50,52 +90,32 @@ namespace MVC.Controllers
             return View();
         }
 
-        public IActionResult Charges(int total)
+        public IActionResult Charges(string name, string address, string phone, string email, int total)
         {
-            Console.WriteLine("=========================");
-            Console.WriteLine(total);
-            Total harga = new Total()
-            {
-                total = total
-            };
-            _appDbContext.Totals.Add(harga);
-            _appDbContext.SaveChanges();
-            
-            return RedirectToAction("Check", "Home");
-        }
-        public IActionResult Check()
-        {
-            var items = from i in _appDbContext.Totals select i;
+            var items = from i in _appDbContext.Transactions select i;
             ViewBag.items = items;
             var transc = from i in _appDbContext.Carts select i;
             ViewBag.transc = transc;
-            return View("Checkout");
-        }
-
-        public IActionResult Checkout(string first, string last, string address, string country, string state, int zip, int totalBelanja)
-        {
-            System.Console.WriteLine("CEKBRO");
-            Console.WriteLine("====================================");
-            Console.WriteLine(first);
-            Console.WriteLine(last);
+            Console.WriteLine("=========================");
+            Console.WriteLine(total);
+            Console.WriteLine(name);
             Console.WriteLine(address);
-            Console.WriteLine(country);
-            Console.WriteLine(state);
-            Console.WriteLine(zip);
-            Console.WriteLine(totalBelanja);
+            Console.WriteLine(email);
             Transaction harga = new Transaction()
             {
-                konsumen = first+" "+last,
-                alamat = address+" "+country,
-                Province = state,
-                PostalCode = zip,
-                totalBelanja = totalBelanja
+                name = name,
+                address = address,
+                email = email,
+                phone = phone,
+                total = total
             };
             _appDbContext.Transactions.Add(harga);
             _appDbContext.SaveChanges();
-            return View("Purchase");
+            
+            return View("Payment");
         }
-        public IActionResult Purchase(string stripeEmail, string stripeToken)
+
+        public IActionResult Payment(string stripeEmail, string stripeToken)
         {
             var customer = new CustomerService();
             var charges = new ChargeService();
@@ -103,11 +123,11 @@ namespace MVC.Controllers
                 Email = stripeEmail,
                 Source = stripeToken
             });
-            var x = from i in _appDbContext.Totals select i;
+            var x = from i in _appDbContext.Transactions.OrderByDescending(a => a.id) select i;
             foreach (var i in x)
             {
             var charge = charges.Create(new ChargeCreateOptions{
-                Amount = i.total,
+                Amount = (i.total*100),
                 Description = "Test Payment",
                 Currency = "idr",
                 Customer = customers.Id
@@ -123,6 +143,12 @@ namespace MVC.Controllers
 
         public IActionResult Success()
         {
+            var y = from i in _appDbContext.Carts select i;
+            foreach (var i in y)
+            {
+            _appDbContext.Carts.RemoveRange(i);
+            }
+            _appDbContext.SaveChanges();
             return View();
         }
 
@@ -170,6 +196,68 @@ namespace MVC.Controllers
             _appDbContext.Carts.Remove(Delete);
             _appDbContext.SaveChanges();
             return RedirectToAction("Cart","Home");
+        }
+
+        public IndexViewModel Sorting(int Sort,int? page)
+        {   
+            var value = Sort;
+            ViewBag.Sort = value;
+    
+            if(Sort == 1)
+            {
+                var data = _appDbContext.Cookies.OrderBy(u => u.nama);
+                var pager = new Pager(data.Count(), page);
+                var viewModel = new IndexViewModel
+                {
+                    Cookies = data.Skip((pager.CurrentPage - 1) * pager.PageSize).Take(pager.PageSize),
+                    Pager = pager
+                };
+                return (viewModel);
+            }
+            if(Sort == 2)
+            {
+                var data = _appDbContext.Cookies.OrderByDescending(u => u.nama);
+                var pager = new Pager(data.Count(), page);
+                var viewModel = new IndexViewModel
+                {
+                    Cookies = data.Skip((pager.CurrentPage - 1) * pager.PageSize).Take(pager.PageSize),
+                    Pager = pager
+                };
+                return viewModel;  
+            }
+            if(Sort == 3)
+            {
+                var data = _appDbContext.Cookies.OrderBy(u => u.harga);
+                var pager = new Pager(data.Count(), page);
+                var viewModel = new IndexViewModel
+                {
+                    Cookies= data.Skip((pager.CurrentPage - 1) * pager.PageSize).Take(pager.PageSize),
+                    Pager = pager
+                };
+                return viewModel;
+            }
+            if(Sort == 4)
+            {
+                var data = _appDbContext.Cookies.OrderByDescending(u => u.harga);
+                var pager = new Pager(data.Count(), page);
+                var viewModel = new IndexViewModel
+                {
+                    Cookies = data.Skip((pager.CurrentPage - 1) * pager.PageSize).Take(pager.PageSize),
+                    Pager = pager
+                };
+                return viewModel;
+            }
+            else
+            {
+                var data = _appDbContext.Cookies;
+                var pager = new Pager(data.Count(), page);
+                var viewModel = new IndexViewModel
+                {
+                    Cookies = data.Skip((pager.CurrentPage - 1) * pager.PageSize).Take(pager.PageSize),
+                    Pager = pager
+                };
+                return viewModel;
+            }
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

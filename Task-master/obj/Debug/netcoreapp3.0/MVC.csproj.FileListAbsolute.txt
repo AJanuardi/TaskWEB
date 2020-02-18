@@ -794,7 +794,6 @@ D:\Users\bsi50130\Downloads\Task-master\obj\Debug\netcoreapp3.0\Razor\Views\Admi
 D:\Users\bsi50130\Downloads\Task-master\obj\Debug\netcoreapp3.0\Razor\Views\Home\Cart.cshtml.g.cs
 D:\Users\bsi50130\Downloads\Task-master\obj\Debug\netcoreapp3.0\Razor\Views\Home\Index.cshtml.g.cs
 D:\Users\bsi50130\Downloads\Task-master\obj\Debug\netcoreapp3.0\Razor\Views\Home\Product.cshtml.g.cs
-D:\Users\bsi50130\Downloads\Task-master\obj\Debug\netcoreapp3.0\Razor\Views\Home\Purchase.cshtml.g.cs
 D:\Users\bsi50130\Downloads\Task-master\obj\Debug\netcoreapp3.0\Razor\Views\Home\Success.cshtml.g.cs
 D:\Users\bsi50130\Downloads\Task-master\obj\Debug\netcoreapp3.0\Razor\Views\Product\Detail.cshtml.g.cs
 D:\Users\bsi50130\Downloads\Task-master\obj\Debug\netcoreapp3.0\Razor\Views\Shared\Error.cshtml.g.cs
@@ -808,4 +807,5 @@ D:\Users\bsi50130\Downloads\Task-master\obj\Debug\netcoreapp3.0\MVC.Views.pdb
 D:\Users\bsi50130\Downloads\Task-master\obj\Debug\netcoreapp3.0\MVC.csproj.CopyComplete
 D:\Users\bsi50130\Downloads\Task-master\obj\Debug\netcoreapp3.0\MVC.dll
 D:\Users\bsi50130\Downloads\Task-master\obj\Debug\netcoreapp3.0\MVC.pdb
-D:\Users\bsi50130\Downloads\Task-master\obj\Debug\netcoreapp3.0\Razor\Views\Home\Checkout.cshtml.g.cs
+D:\Users\bsi50130\Downloads\Task-master\obj\Debug\netcoreapp3.0\Razor\Views\Home\Payment.cshtml.g.cs
+D:\Users\bsi50130\Downloads\Task-master\obj\Debug\netcoreapp3.0\Razor\Views\Admin\Transaction.cshtml.g.cs

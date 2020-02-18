@@ -5,10 +5,10 @@ namespace MVC.Models
     public class Transaction
     {
         public int id {get; set;}
-        public string konsumen {get; set;}
-        public string alamat {get; set;}
-        public string Province {get; set;}
-        public int? PostalCode {get; set;} = null;
-        public int totalBelanja {get; set;}
+        public string name {get; set;}
+        public string address {get;set;}
+        public string phone {get;set;}
+        public string email {get;set;}
+        public int total {get; set;}
     }
 }

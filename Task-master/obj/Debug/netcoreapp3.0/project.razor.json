@@ -14354,6 +14354,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "d:\\Users\\bsi50130\\Downloads\\Task-master\\Views\\Admin\\Transaction.cshtml",
+      "TargetPath": "Views\\Admin\\Transaction.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "d:\\Users\\bsi50130\\Downloads\\Task-master\\Views\\Admin\\Data.cshtml",
       "TargetPath": "Views\\Admin\\Data.cshtml",
       "FileKind": "mvc"
@@ -14369,8 +14374,8 @@
       "FileKind": "mvc"
     },
     {
-      "FilePath": "d:\\Users\\bsi50130\\Downloads\\Task-master\\Views\\Home\\Checkout.cshtml",
-      "TargetPath": "Views\\Home\\Checkout.cshtml",
+      "FilePath": "d:\\Users\\bsi50130\\Downloads\\Task-master\\Views\\Home\\Payment.cshtml",
+      "TargetPath": "Views\\Home\\Payment.cshtml",
       "FileKind": "mvc"
     },
     {
@@ -14416,11 +14421,6 @@
     {
       "FilePath": "d:\\Users\\bsi50130\\Downloads\\Task-master\\Views\\Home\\Success.cshtml",
       "TargetPath": "Views\\Home\\Success.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "d:\\Users\\bsi50130\\Downloads\\Task-master\\Views\\Home\\Purchase.cshtml",
-      "TargetPath": "Views\\Home\\Purchase.cshtml",
       "FileKind": "mvc"
     }
   ],

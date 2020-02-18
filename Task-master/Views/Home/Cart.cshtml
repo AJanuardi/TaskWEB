@@ -1,9 +1,9 @@
 @{
     ViewData["Title"] = "Get Your Bites First than Other";
 }
-<h2>@ViewData["Title"]</h2>
+<h1>@ViewData["Title"]</h1>
 
-<p>Confirm your Cookie First</p>
+<h5>Confirm your Cookie First</h5>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -31,10 +31,57 @@
       background-color: #f2f2f2;
       padding: 25px;
     }
+    input[type=text] {
+      width: 130px;
+      box-sizing: border-box;
+      border: 2px solid #ccc;
+      border-radius: 4px;
+      font-size: 16px;
+      background-color: white;
+      background-image: url('searchicon.png');
+      background-position: 10px 10px; 
+      background-repeat: no-repeat;
+      padding: 12px 20px 12px 40px;
+      transition: width 0.4s ease-in-out;
+    }
+
+    input[type=text]:focus {
+      width: 100%;
+    }
   </style>
 </head>
 
 <body>
+<br>
+<div class="container">
+<div class="row">
+<div class="col-md-6">
+<label>Full Name</label>
+<form>
+  <input type="text" name="search" style="background-image: url(https://simpleicon.com/wp-content/uploads/user1.png);" id="a" placeholder="Name">
+</form>
+<br>
+<label>Address</label>
+<form>
+  <input type="text" name="search" id="b" placeholder="Address">
+</form>
+</div>
+<br>
+<div class="col-md-6">
+<label>Mobile Number</label>
+<form>
+  <input type="text" name="search" id="c" placeholder="Phone">
+</form>
+<br>
+<label>Email</label>
+<form>
+  <input type="text" name="search" id="d" placeholder="Email">
+</form>
+</div>
+</div>
+</div>
+</div>
+<br>
 <div class="container mb-4">
     <div class="row">
         <div class="col-12">
@@ -93,9 +140,11 @@
                 </div>
             </div>
         </div>
-        <br><br>
+        <br>
+        <br>
     </div>
 </div>
+<br><br><br><br><br><br>
 </body>
 </html>
 
@@ -118,6 +167,10 @@ function remove(btn) {
 function checkout(btn) {
     var get = "total";
     var total = document.getElementById(get).innerHTML;
-    location.href='/Home/Charges?total='+total;
+    var name = document.getElementById("a").value;
+    var address = document.getElementById("b").value;
+    var phone = document.getElementById("c").value;
+    var email = document.getElementById("d").value;
+    location.href='/Home/Charges?name='+name+'&address='+address+'&phone='+phone+'&email='+email+'&total='+total;
 }
 </script>

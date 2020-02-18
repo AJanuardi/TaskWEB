@@ -31,13 +31,35 @@
 </head>
 <body>
 <br>
-<button id="btn" type="button" class="btn btn-primary" value="update" onclick="location.href='/Admin/Export'">Export</button>
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+    <div class="text-left">
+      <button id="btn" type="button" class="btn btn-danger" value="update" onclick="location.href='/Admin/Logout'">Logout</button>
+    </div>
+    </div>
+  </div>
+</div>
 <br>
-<br>
-<form asp-action="Import" asp-controller="Admin" enctype="multipart/form-data">
-  <input  type="file" id="Upload" name="Upload" value="Upload">
-  <button type="submit" class="btn btn-success">Import</button>
-</form>
+          <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                <div class="text-left">
+                <button id="btn" type="button" class="btn btn-primary" value="update" onclick="location.href='/Admin/Export'">Export</button>
+                </div>
+                <br>
+                <br>
+                </div>
+                <div class="col-md-6">
+                <div class="text-right">
+                <form asp-action="Import" asp-controller="Admin" enctype="multipart/form-data">
+                  <input  type="file" id="Upload" name="Upload" value="Upload">
+                  <button type="submit" class="btn btn-success">Import</button>
+                </form>
+                </div>
+              </div>
+            </div>
+          </div>
 <br>
 <div class="text-center">
 <table id="cookies">
@@ -50,9 +72,26 @@
     <th>Action</th>
   </tr>
   @{
-      <a href="https://localhost:5001/Admin/Edit">Edit</a>
-      <br>
-      <a href="https://localhost:5001/Admin/Add">Add</a>
+    <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                <div class="text-right">
+                <button id="btn" type="button" class="btn btn-success" value="update" onclick="location.href='/Admin/Edit'">Edit</button>
+                </div>
+                </div>
+                <div class="col-md-4">
+                <div class="text-center">
+                <button id="btn" type="button" class="btn btn-success" value="update" onclick="location.href='/Admin/Add'">Add</button>
+                </div>
+                </div>
+                <div class="col-md-4">
+                <div class="text-left">
+                <button id="btn" type="button" class="btn btn-success" value="update" onclick="location.href='/Admin/Transaction'">Transaction</button>
+                </div>
+                </div>
+            </div>
+    </div>
+ 
       var x = ViewBag.items;
       foreach (var i in x)
       {
@@ -63,7 +102,7 @@
             <td>@i.deskripsi</td>
             <td>@i.harga</td>
             <td>
-                <a href="https://localhost:5001/Admin/Remove/@i.id">Remove</a>
+                <button id="btn" type="button" class="btn btn-success" value="update" onclick="location.href='/Admin/Remove/@i.id'">Transaction</button>
             </td>
         </tr>
       }
