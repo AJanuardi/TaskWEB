@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Users\\bsi50130\\Downloads\\Task-master\\MVC.csproj": {}
+    "D:\\Users\\bsi50130\\Downloads\\TaskWEB\\MVC.csproj": {}
   },
   "projects": {
-    "D:\\Users\\bsi50130\\Downloads\\Task-master\\MVC.csproj": {
+    "D:\\Users\\bsi50130\\Downloads\\TaskWEB\\MVC.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Users\\bsi50130\\Downloads\\Task-master\\MVC.csproj",
+        "projectUniqueName": "D:\\Users\\bsi50130\\Downloads\\TaskWEB\\MVC.csproj",
         "projectName": "MVC",
-        "projectPath": "D:\\Users\\bsi50130\\Downloads\\Task-master\\MVC.csproj",
+        "projectPath": "D:\\Users\\bsi50130\\Downloads\\TaskWEB\\MVC.csproj",
         "packagesPath": "D:\\Users\\bsi50130\\.nuget\\packages\\",
-        "outputPath": "D:\\Users\\bsi50130\\Downloads\\Task-master\\obj\\",
+        "outputPath": "D:\\Users\\bsi50130\\Downloads\\TaskWEB\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "D:\\Users\\bsi50130\\AppData\\Roaming\\NuGet\\NuGet.Config"

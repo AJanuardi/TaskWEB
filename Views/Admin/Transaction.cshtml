@@ -1,11 +1,53 @@
-@{
-    var x = ViewBag.items;
-    foreach (var i in x)
-    {
-        @i.name
-        @i.address
-        @i.phone
-        @i.email
-        @i.total
-    }
+<style>
+  #cookies {
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
 }
+
+#cookies td, #cookies th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#cookies tr:nth-child(even){background-color: #f2f2f2;}
+
+#cookies tr:hover {background-color: #ddd;}
+
+#cookies th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #4CAF50;
+  color: white;
+}
+</style>
+
+<div class="text-center">
+<br>
+<h1>List of Transactions</h1>
+<br>
+<br>
+<table id="cookies">
+  <tr>
+    <th>Full Name</th>
+    <th>Address</th>
+    <th>Phone</th>
+    <th>Email</th>
+    <th>Total</th>
+  </tr>
+ @{
+      var x = ViewBag.items;
+      foreach (var i in x)
+      {
+        <tr>
+            <td>@i.name</td>
+            <td>@i.address</td>
+            <td>@i.phone</td>
+            <td>@i.email</td>
+            <td>@i.total</td>
+        </tr>
+      }
+  }
+</table>
+</div>
