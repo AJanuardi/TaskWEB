@@ -1,0 +1,14 @@
+@using Microsoft.Extensions.Options
+@inject IOptions<MVC.Data.StripeSettings> Stripe
+
+<div class="text-center">
+    <form asp-action="Payment" asp-controller="Home" method="POST">
+        <h1>Checkout Page</h1>
+        <script src="//checkout.stripe.com/v3/checkout.js"
+        class="stripe-button"
+        data-key="@Stripe.Value.PublishableKey"
+        data-locale="auto"
+        data-description="Sample Charge">
+        </script>
+    </form>
+</div>

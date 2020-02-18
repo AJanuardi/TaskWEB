@@ -1,0 +1,11 @@
+@{
+    var x = ViewBag.items;
+    foreach (var i in x)
+    {
+        @i.name
+        @i.address
+        @i.phone
+        @i.email
+        @i.total
+    }
+}

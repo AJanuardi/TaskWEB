@@ -1,0 +1,176 @@
+@{
+    ViewData["Title"] = "Get Your Bites First than Other";
+}
+<h1>@ViewData["Title"]</h1>
+
+<h5>Confirm your Cookie First</h5>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <style>
+    /* Remove the navbar's default rounded borders and increase the bottom margin */ 
+    .navbar {
+      margin-bottom: 50px;
+      border-radius: 0;
+      background-color: #191716;
+    }
+    
+    /* Remove the jumbotron's default bottom margin */ 
+     .jumbotron {
+      margin-bottom: 0;
+    }
+   
+    /* Add a gray background color and some padding to the footer */
+    footer {
+      background-color: #f2f2f2;
+      padding: 25px;
+    }
+    input[type=text] {
+      width: 130px;
+      box-sizing: border-box;
+      border: 2px solid #ccc;
+      border-radius: 4px;
+      font-size: 16px;
+      background-color: white;
+      background-image: url('searchicon.png');
+      background-position: 10px 10px; 
+      background-repeat: no-repeat;
+      padding: 12px 20px 12px 40px;
+      transition: width 0.4s ease-in-out;
+    }
+
+    input[type=text]:focus {
+      width: 100%;
+    }
+  </style>
+</head>
+
+<body>
+<br>
+<div class="container">
+<div class="row">
+<div class="col-md-6">
+<label>Full Name</label>
+<form>
+  <input type="text" name="search" style="background-image: url(https://simpleicon.com/wp-content/uploads/user1.png);" id="a" placeholder="Name">
+</form>
+<br>
+<label>Address</label>
+<form>
+  <input type="text" name="search" id="b" placeholder="Address">
+</form>
+</div>
+<br>
+<div class="col-md-6">
+<label>Mobile Number</label>
+<form>
+  <input type="text" name="search" id="c" placeholder="Phone">
+</form>
+<br>
+<label>Email</label>
+<form>
+  <input type="text" name="search" id="d" placeholder="Email">
+</form>
+</div>
+</div>
+</div>
+</div>
+<br>
+<div class="container mb-4">
+    <div class="row">
+        <div class="col-12">
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th scope="col"> </th>
+                            <th scope="col">Product</th>
+                            <th scope="col" class="text-center">Quantity</th>
+                            <th scope="col" class="text-right">Price</th>
+                            <th> </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                         @{
+                         var x = ViewBag.items;
+                         int sum = 0;
+                         int total = 0;
+                         foreach (var i in x)
+                            {
+                         sum= @i.quantity * @i.harga;
+                         total+=sum;
+                        <tr>
+                            <td><img style="width:100px" src=@i.foto/> </td>
+                            <td>@i.nama</td>
+                            <td><input id="inp-@i.id" class="form-control" type="text" value=@i.quantity></td>
+                            <td class="text-right">Rp.@i.harga</td>
+                            <td>
+                            <div class="text-right">
+                            <button id="upd-@i.id" type="button" class="btn btn-success" value="update" onclick="javascript:submitUpdate(this)">Update</button>
+                            <button id="rem-@i.id" type="button" class="btn btn-danger" value="remove" onclick="javascript:remove(this)">Remove</button>
+                            </div></td>
+                        </tr> }
+                         }
+                       
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td><strong>Total (Rp)</strong></td>
+                            <td class="text-right"><strong id="total">@total</strong></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="col mb-2">
+            <div class="row">
+                <div class="col-sm-12  col-md-6">
+                    <button class="btn btn-block btn-light" onclick="location.href='/Home/Product'">Continue Shopping</button>
+                </div>
+                <div class="col-sm-12 col-md-6 text-right">
+                    <button class="btn btn-lg btn-block btn-primary text-uppercase" onclick="javascript:checkout(this)">Checkout</button>
+                </div>
+            </div>
+        </div>
+        <br>
+        <br>
+    </div>
+</div>
+<br><br><br><br><br><br>
+</body>
+</html>
+
+<script type="text/javascript">
+function submitUpdate(buttonSubmit)
+{
+    var id = buttonSubmit.id;
+    id = id.substring(4,id.Length);
+    var inputId = "inp-"+id;
+    var value = document.getElementById(inputId).value;
+    location.href='/Home/Update?id='+id+'&val='+value;
+}
+
+function remove(btn) {
+    var id = btn.id;
+    id = id.substring(4,id.Length);
+    location.href='/Home/Delete?id='+id;
+}
+
+function checkout(btn) {
+    var get = "total";
+    var total = document.getElementById(get).innerHTML;
+    var name = document.getElementById("a").value;
+    var address = document.getElementById("b").value;
+    var phone = document.getElementById("c").value;
+    var email = document.getElementById("d").value;
+    location.href='/Home/Charges?name='+name+'&address='+address+'&phone='+phone+'&email='+email+'&total='+total;
+}
+</script>
