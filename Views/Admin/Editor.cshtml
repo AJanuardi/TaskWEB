@@ -2,34 +2,33 @@
 
 @{
     var x = ViewBag.items;
-    foreach (var i in x)
-    {
+    
         <form asp-action="Editor" asp-controller="Admin" method="POST" id="editform" name="edit" role="form">
     <div class="modal-body">
-        <input type="text" name="id" class="form-control" value="@i.id" hidden>
+        <input type="text" name="id" class="form-control" value="@x.id" hidden>
         <div class="form-group">
             <label for="name">Nama</label>
-            <input type="text" name="nama" class="form-control" value="@i.nama">
+            <input type="text" name="nama" class="form-control" value="@x.nama">
         </div>
         <div class="form-group">
             <label for="name">Harga</label>
-            <input type="text" name="harga" class="form-control" value="@i.harga">
+            <input type="text" name="harga" class="form-control" value="@x.harga">
         </div>
         <div class="form-group">
             <label for="name">Rating</label>
-            <input type="text" name="rating" class="form-control" value="@i.rating">
+            <input type="text" name="rating" class="form-control" value="@x.rating">
         </div>
         <div class="form-group">
             <label for="name">Foto</label>
-            <input type="text" name="foto" class="form-control" value="@i.foto">
+            <input type="text" name="foto" class="form-control" value="@x.foto">
         </div><div class="form-group">
             <label for="name">Deskripsi</label>
-            <input type="text" name="deskripsi" class="form-control" value="@i.deskripsi">
+            <input type="text" name="deskripsi" class="form-control" value="@x.deskripsi">
         </div>
     </div>
     <div class="modal-footer">
         <input type="submit" class="btn btn-success" id="submit">
     </div>
     </form>
-    }
+    
 }

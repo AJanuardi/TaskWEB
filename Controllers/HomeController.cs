@@ -14,6 +14,11 @@ using Newtonsoft.Json;
 using System.IdentityModel.Tokens.Jwt;
 using Microsoft.AspNetCore.Authorization;
 using Stripe;
+using System.Net;
+using System.Net.Mail;
+using MimeKit;
+using MailKit.Net.Smtp;
+using MailKit;
 
 namespace MVC.Controllers
 {
@@ -92,15 +97,6 @@ namespace MVC.Controllers
 
         public IActionResult Charges(string name, string address, string phone, string email, int total)
         {
-            var items = from i in _appDbContext.Transactions select i;
-            ViewBag.items = items;
-            var transc = from i in _appDbContext.Carts select i;
-            ViewBag.transc = transc;
-            Console.WriteLine("=========================");
-            Console.WriteLine(total);
-            Console.WriteLine(name);
-            Console.WriteLine(address);
-            Console.WriteLine(email);
             Transaction harga = new Transaction()
             {
                 name = name,
@@ -111,6 +107,15 @@ namespace MVC.Controllers
             };
             _appDbContext.Transactions.Add(harga);
             _appDbContext.SaveChanges();
+            var items = from i in _appDbContext.Transactions.OrderBy(a=>a.id) select i;
+            var last = items.LastOrDefault();
+            ViewBag.total = last.total;
+            ViewBag.nama = last.name;
+            ViewBag.alamat = last.address;
+            ViewBag.email = last.email;
+            ViewBag.phone = last.phone;
+            var transc = from i in _appDbContext.Carts select i;
+            ViewBag.transc = transc;
             
             return View("Payment");
         }
@@ -135,7 +140,7 @@ namespace MVC.Controllers
             if (charge.Status == "succeeded")
             {
                 string BalanceTransactionId = charge.BalanceTransactionId;
-                return View("Success");
+                return RedirectToAction("Success", "Home");
             }
             }
             return View();
@@ -143,19 +148,39 @@ namespace MVC.Controllers
 
         public IActionResult Success()
         {
-            var y = from i in _appDbContext.Carts select i;
-            foreach (var i in y)
+            var message = new MimeMessage();
+            var x = from i in _appDbContext.Transactions.OrderBy(a => a.id) select i;
+            var last = x.LastOrDefault();
+            var nama = last.name;
+            var email = last.email;
+            var total = last.total;
+            message.To.Add(new MailboxAddress(nama, email));
+            message.From.Add(new MailboxAddress("Cookies", "cookies@cookies.com"));
+            message.Subject = "Invoice Cookies Store";
+            message.Body = new TextPart("plain")
             {
-            _appDbContext.Carts.RemoveRange(i);
+                Text = @"Hey "+nama+",\n"
+                +"Thanks for Purchasing your Favorite Cookies from Us\n"
+                +"Here's the Details:\n"
+                +"Amount: Rp."+total+",-\n"
+            };
+            using (var emailClient = new MailKit.Net.Smtp.SmtpClient())
+            {
+                emailClient.ServerCertificateValidationCallback = (s,c,h,e) => true;
+
+                emailClient.Connect("smtp.mailtrap.io", 587, false);
+
+                emailClient.Authenticate("4f39759a75dd18","7e295fd331c5b6");
+
+                emailClient.Send(message);
+
+                emailClient.Disconnect(true);
             }
-            _appDbContext.SaveChanges();
             return View();
         }
 
         public IActionResult Add(int id)
         {
-            Console.WriteLine("=================================");
-            Console.WriteLine(id);
             var items = from i in _appDbContext.Cookies where i.id == id select i;
             ViewBag.items = items;
             foreach (var i in items)
@@ -175,9 +200,6 @@ namespace MVC.Controllers
 
         public IActionResult Update (int id, int val) 
         {
-            Console.WriteLine("=============================");
-            Console.WriteLine(id);
-            Console.WriteLine(val);
             var item = _appDbContext.Carts.Find(id);
             item.quantity = val;
             _appDbContext.Add (item);
@@ -190,8 +212,6 @@ namespace MVC.Controllers
 
         public IActionResult Delete(int id)
         {
-            Console.WriteLine("===========================");
-            Console.WriteLine(id);
             var Delete = _appDbContext.Carts.Find(id);
             _appDbContext.Carts.Remove(Delete);
             _appDbContext.SaveChanges();

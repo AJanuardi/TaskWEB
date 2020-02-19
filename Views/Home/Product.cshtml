@@ -72,6 +72,7 @@ div.desc {
 <div class="text-center">
     <h1>@ViewData["Title"]</h1>
     <p>Many Product that You Can Buy</p>
+    <br>
 </div>
 </head>
 <div class="text-center">
@@ -90,6 +91,7 @@ div.desc {
                     <input name="Search" id="PerPage" placeholder="Items"style="position: relative;left:30px;width:50px;" >
                     <input type="submit" class="btn btn-success" style="position: relative;left:35px;" onclick="javascript: page_btn(this)">
 </div>
+<br>
 <div class="text-center">
     @if (Model.Pager.EndPage > 1)
         {

@@ -914,3 +914,6 @@ D:\Users\bsi50130\Downloads\TaskWEB\obj\Debug\netcoreapp3.0\MVC.Views.pdb
 D:\Users\bsi50130\Downloads\TaskWEB\obj\Debug\netcoreapp3.0\MVC.csproj.CopyComplete
 D:\Users\bsi50130\Downloads\TaskWEB\obj\Debug\netcoreapp3.0\MVC.dll
 D:\Users\bsi50130\Downloads\TaskWEB\obj\Debug\netcoreapp3.0\MVC.pdb
+D:\Users\bsi50130\Downloads\TaskWEB\bin\Debug\netcoreapp3.0\MailKit.dll
+D:\Users\bsi50130\Downloads\TaskWEB\bin\Debug\netcoreapp3.0\MimeKit.dll
+D:\Users\bsi50130\Downloads\TaskWEB\bin\Debug\netcoreapp3.0\BouncyCastle.Crypto.dll

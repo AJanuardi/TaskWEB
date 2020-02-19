@@ -125,9 +125,9 @@ namespace MVC.Controllers
         }
         
         [Authorize]
-        public IActionResult Edit()
+        public IActionResult Edit(int id)
         {
-            var items = from i in _appDbContext.Cookies select i;
+            var items = _appDbContext.Cookies.Find(id);
             ViewBag.items = items;
             return View("Editor", "Admin");
         }

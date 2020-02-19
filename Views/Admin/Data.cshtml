@@ -47,8 +47,6 @@
                 <div class="text-left">
                 <button id="btn" type="button" class="btn btn-primary" value="update" onclick="location.href='/Admin/Export'">Export</button>
                 </div>
-                <br>
-                <br>
                 </div>
                 <div class="col-md-6">
                 <div class="text-right">
@@ -56,11 +54,11 @@
                   <input  type="file" id="Upload" name="Upload" value="Upload">
                   <button type="submit" class="btn btn-success">Import</button>
                 </form>
+                <br>
                 </div>
               </div>
             </div>
           </div>
-<br>
 <div class="text-center">
 <table id="cookies">
   <tr>
@@ -74,22 +72,18 @@
   @{
     <div class="container">
             <div class="row">
-                <div class="col-md-4">
-                <div class="text-right">
-                <button id="btn" type="button" class="btn btn-success" value="update" onclick="location.href='/Admin/Edit'">Edit</button>
-                </div>
-                </div>
-                <div class="col-md-4">
-                <div class="text-center">
-                <button id="btn" type="button" class="btn btn-success" value="update" onclick="location.href='/Admin/Add'">Add</button>
-                </div>
-                </div>
-                <div class="col-md-4">
+                <div class="col-md-6">
                 <div class="text-left">
-                <button id="btn" type="button" class="btn btn-success" value="update" onclick="location.href='/Admin/Transaction'">Transaction</button>
+                <button id="btn" type="button" class="btn btn-warning" value="update" onclick="location.href='/Admin/Add'">Add</button>
+                </div>
+                </div>
+                <div class="col-md-6">
+                <div class="text-right">
+                <button id="btn" type="button" class="btn btn-warning" value="update" onclick="location.href='/Admin/Transaction'">Transaction</button>
                 </div>
                 </div>
             </div>
+            <br>
     </div>
  
       var x = ViewBag.items;
@@ -102,6 +96,7 @@
             <td>@i.deskripsi</td>
             <td>@i.harga</td>
             <td>
+                <button id="btn" type="button" class="btn btn-success" value="update" onclick="location.href='/Admin/Edit/@i.id'">Edit</button>
                 <button id="btn" type="button" class="btn btn-danger" value="update" onclick="location.href='/Admin/Remove/@i.id'">Remove</button>
             </td>
         </tr>
