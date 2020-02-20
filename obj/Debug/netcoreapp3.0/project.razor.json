@@ -14414,6 +14414,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "d:\\Users\\bsi50130\\Downloads\\TaskWEB\\Views\\Home\\Customer.cshtml",
+      "TargetPath": "Views\\Home\\Customer.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "d:\\Users\\bsi50130\\Downloads\\TaskWEB\\Views\\Home\\Product.cshtml",
       "TargetPath": "Views\\Home\\Product.cshtml",
       "FileKind": "mvc"

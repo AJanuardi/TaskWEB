@@ -19,6 +19,7 @@ using MVC.Models;
 using MVC.Data;
 using Newtonsoft.Json;
 using Stripe;
+using SignalR.SignalR;
 
 namespace MVC
 {
@@ -49,6 +50,8 @@ namespace MVC
             {
                 options.UseSqlServer(Configuration.GetConnectionString("localhost"));
             });
+
+            services.AddSignalR();
 
             //Authentication
             services.AddAuthentication(options =>
@@ -119,6 +122,8 @@ namespace MVC
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Admin}/{action=Index}/{id?}");
+
+                endpoints.MapHub<Chathub>("/chatHub");
             });
         }
     }
