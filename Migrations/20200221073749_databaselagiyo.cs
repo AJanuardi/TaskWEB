@@ -2,7 +2,7 @@
 
 namespace MVC.Migrations
 {
-    public partial class datafixpakebangetnihyobromulsipnih : Migration
+    public partial class databaselagiyo : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -20,6 +20,21 @@ namespace MVC.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Carts", x => x.id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Chats",
+                columns: table => new
+                {
+                    id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    nama = table.Column<string>(nullable: true),
+                    pesan = table.Column<string>(nullable: true),
+                    status = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Chats", x => x.id);
                 });
 
             migrationBuilder.CreateTable(
@@ -76,6 +91,9 @@ namespace MVC.Migrations
         {
             migrationBuilder.DropTable(
                 name: "Carts");
+
+            migrationBuilder.DropTable(
+                name: "Chats");
 
             migrationBuilder.DropTable(
                 name: "Cookies");

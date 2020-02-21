@@ -282,7 +282,17 @@ namespace MVC.Controllers
 
         public IActionResult Customer()
         {
+            var x = from i in _appDbContext.Chats select i;
+            ViewBag.items = x;
             return View();
+        }
+
+        public IActionResult Endchat()
+        {
+            var x =from i in _appDbContext.Chats select i;
+            _appDbContext.Chats.RemoveRange(x);
+            _appDbContext.SaveChanges();
+            return RedirectToAction("Product", "Home");
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

@@ -16,7 +16,6 @@
             var x = ViewBag.items;
             foreach (var i in x)
             {
-                
                 if (i.nama == "Admin")
                 {
         <p style="color:red; text-align:left;">Admin</p>
@@ -37,7 +36,8 @@
     <div class="panel-footer">
         <br>
         <div class="input-group">
-            <input id="user" type="hidden" name="user" class="form-control input-sm" placeholder="Name" value="User"/>
+            <input id="user" type="hidden" name="user" class="form-control input-sm" placeholder="Name" value="Admin"/>
+            <input id="read" type="hidden" name="read" class="form-control input-sm" placeholder="Name" value="Read"/>
             <input id="message" type="text" name="message" class="form-control input-sm" placeholder="Message"/>
             <span class="input-group-btn">
                 <input type="button" class="btn btn-warning btn-sm" id="sendmessage" value="Send" style="width: 300px; height: 38px;">
@@ -49,7 +49,7 @@
     </div>
 </div>
 <div class="text-center">
-    <button class="btn btn-block btn-danger" onclick="location.href='/Home/Endchat'">Resolve</button>
+    <button class="btn btn-block btn-secondary" onclick="location.href='/Admin/Data'">Administrator Page</button>
 </div>
     @section Scripts
     {
@@ -65,6 +65,7 @@
                     event.preventDefault();
                     let user = $('#user').val();
                     let message = $('#message').val();
+                    let read = $('#read').val();
 
                     connection.invoke("SendMessage", user, message)
                         .then(data => {
@@ -72,12 +73,19 @@
                         }).catch(err => {
                         return console.error(err.toString());
                     })
+
+                    connection.invoke("Read", read)
+                        .then(data => {
+                            console.log('Berhasil kirim data')
+                        }).catch(err => {
+                            return console.error(err.toString());
+                        })
                 });
                 connection.on("GotAMessage", function (user, message) {
                    if (user == "Admin") 
                     {
                     // Add the message to the page.
-                    $('#discussion').append('<p style="color:;text-align:left;">'+'Admin'+'</p>' +'<p style="color:red; text-align:left;"><strong><img = src="https://www.phplivesupport.com/pics/icons/avatars/public/avatar_7.png" title="Admin">'
+                    $('#discussion').append('<p style="color:red;text-align:left;">'+'User'+'</p>' +'<p style="color:red; text-align:left;"><strong><img = src="https://www.phplivesupport.com/pics/icons/avatars/public/avatar_7.png" title="Admin">'
                         + ' </strong> ' + message + '</p>');
                     }
                     else if (user != "Admin") 
@@ -86,7 +94,6 @@
                     $('#discussion').append('<p style="color:black;text-align:right;">'+'User'+'</p>' +'<p style="color:black; text-align:right;"><strong><img = src="https://www.phplivesupport.com/pics/icons/avatars/public/avatar_71.png" title="User">'
                         + ' </strong> ' + message + '</p>');
                     }
-
                 });
 
             }).catch(function (err) {

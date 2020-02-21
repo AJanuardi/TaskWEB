@@ -38,6 +38,14 @@
       <button id="btn" type="button" class="btn btn-danger" value="update" onclick="location.href='/Admin/Logout'">Logout</button>
     </div>
     </div>
+    <div class="col-md-6">
+    <div class="text-right">
+      @{
+        var y = ViewBag.count;
+      <button id="btn" type="button" class="btn btn-warning" value="update" onclick="location.href='/Admin/Chats'">Chat(@y)</button>
+      }
+    </div>
+    </div>
   </div>
 </div>
 <br>

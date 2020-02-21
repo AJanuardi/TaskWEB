@@ -919,3 +919,4 @@ D:\Users\bsi50130\Downloads\TaskWEB\bin\Debug\netcoreapp3.0\MimeKit.dll
 D:\Users\bsi50130\Downloads\TaskWEB\bin\Debug\netcoreapp3.0\BouncyCastle.Crypto.dll
 D:\Users\bsi50130\Downloads\TaskWEB\obj\Debug\netcoreapp3.0\Razor\Views\Home\Customer.cshtml.g.cs
 D:\Users\bsi50130\Downloads\TaskWEB\bin\Debug\netcoreapp3.0\libman.json
+D:\Users\bsi50130\Downloads\TaskWEB\obj\Debug\netcoreapp3.0\Razor\Views\Admin\Chats.cshtml.g.cs

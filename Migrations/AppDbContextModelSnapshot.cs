@@ -42,6 +42,27 @@ namespace MVC.Migrations
                     b.ToTable("Carts");
                 });
 
+            modelBuilder.Entity("MVC.Models.Chat", b =>
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("nama")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("pesan")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("status")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("id");
+
+                    b.ToTable("Chats");
+                });
+
             modelBuilder.Entity("MVC.Models.Cookie", b =>
                 {
                     b.Property<int>("id")

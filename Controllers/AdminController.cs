@@ -95,6 +95,8 @@ namespace MVC.Controllers
         [Authorize]
         public IActionResult Data()
         {
+            var count = (from i in _appDbContext.Chats where (i.status == null) select i).Count();
+            ViewBag.count = count;
             var token = HttpContext.Session.GetString("JWTToken");
             var jwtSec  = new JwtSecurityTokenHandler();
             var securityToken = jwtSec.ReadToken(token) as JwtSecurityToken;
@@ -225,6 +227,14 @@ namespace MVC.Controllers
         {
             HttpContext.Session.Remove("JWTToken");
             return RedirectToAction("Product","Home");   
+        }
+
+        [Authorize]
+        public IActionResult Chats()
+        {
+            var x = from i in _appDbContext.Chats select i;
+            ViewBag.items = x;
+            return View();
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

@@ -9,6 +9,7 @@ namespace MVC.Data
          public DbSet<Cookie> Cookies {get; set;}
          public DbSet<User> Users {get; set;}
          public DbSet<Transaction> Transactions {get; set;}
+         public DbSet<Chat> Chats {get; set;}
 
     public AppDbContext(DbContextOptions options) : base (options) 
     {
