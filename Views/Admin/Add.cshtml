@@ -1,0 +1,39 @@
+@model MVC.Models.Cookie
+<h2>Add Cookies Data</h2>
+
+ <form asp-action="Add" asp-controller="Admin" method="POST" id="editform" name="edit" role="form">
+    <div class="modal-body">
+        <input type="text" name="id" class="form-control" value="" hidden>
+        <div class="form-group">
+            <label for="name">Nama</label>
+            <input type="text" id="Nama" name="nama" class="form-control" value="">
+        </div>
+        <div class="form-group">
+            <label for="name">Harga</label>
+            <input type="text" id="Harga" name="harga" class="form-control" value="">
+        </div>
+        <div class="form-group">
+            <label for="name">Rating</label>
+            <input type="text" id="Rating" name="rating" class="form-control" value="">
+        </div>
+        <div class="form-group">
+            <label for="name">Foto</label>
+            <input type="text" id="Foto" name="foto" class="form-control" value="">
+        </div>
+        <div class="form-group">
+            <label for="name">Deskripsi</label>
+            <input type="text" id="Deskripsi" name="deskripsi" class="form-control" value="">
+        </div>
+    </div>
+    <div class="modal-footer">
+        <input type="submit" class="btn btn-success" id="submit">
+    </div>
+    </form>
+<script type="text/javascript">
+function Add(buttonSubmit)
+    var Rating = document.getElementById("Rating").value;
+    var Nama = document.getElementById("Nama").value;
+    var Foto = document.getElementById("Foto").value;
+    var Deskripsi = document.getElementById("Deskripsi").value;
+    var Harga = document.getElementById("Harga").value;
+</script>

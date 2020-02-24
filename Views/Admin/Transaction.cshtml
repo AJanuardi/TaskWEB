@@ -1,0 +1,83 @@
+<style>
+  #cookies {
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#cookies td, #cookies th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#cookies tr:nth-child(even){background-color: #f2f2f2;}
+
+#cookies tr:hover {background-color: #ddd;}
+
+#cookies th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #4CAF50;
+  color: white;
+}
+</style>
+
+<div class="text-center">
+<br>
+<h1>List of Transactions</h1>
+<br>
+<br>
+<table id="cookies">
+  <tr>
+    <th>Full Name</th>
+    <th>Address</th>
+    <th>Phone</th>
+    <th>Email</th>
+    <th>Total</th>
+    <th>Action</th>
+  </tr>
+ @{
+      var x = ViewBag.items;
+      foreach (var i in x)
+      {
+        <tr>
+            <td>@i.name</td>
+            <td>@i.address</td>
+            <td>@i.phone</td>
+            <td>@i.email</td>
+            <td>@i.total</td>
+            <td>
+              <input type="hidden" id="app" value="approve">
+              <button type="button" class="btn btn-success" value="update" id="approve">Approve</button>
+            </td>
+        </tr>
+      }
+  }
+</table>
+</div>
+@section Scripts
+    {
+        <script type="text/javascript">
+           $(document).ready(function () {
+    
+            let connection = new signalR.HubConnectionBuilder().withUrl("/chatHub").build();
+
+            connection.start().then(function() {
+                console.log("Berhasil");
+
+                $('#approve').on('click', function (event) {
+                    event.preventDefault();
+                    let confirmed = $('#app').val();
+
+                    connection.invoke("Notify", confirmed)
+                        .then(data => {
+                            console.log('Berhasil kirim data')
+                        }).catch(err => {
+                        return console.error(err.toString());
+                    })
+                });
+                })
+           })
+        </script>
+    }

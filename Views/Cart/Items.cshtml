@@ -1,0 +1,14 @@
+<h1>Thank You</h1>
+@{
+  var x = ViewBag.cart;
+  foreach (var i in x)
+  {
+    @i.nama
+    @i.quantity
+  }
+  var y = ViewBag.purchase;
+    @y.total
+    @y.status
+}
+<h5>This is your Expedition Receipt</h5>
+<h6>sdhashdjashdjhasd</h6>

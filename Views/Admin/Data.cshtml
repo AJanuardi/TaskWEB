@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+<div class="text-center">
+<h2>Administration Page</h2>
+</div>
+<style>
+#cookies {
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#cookies td, #cookies th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#cookies tr:nth-child(even){background-color: #f2f2f2;}
+
+#cookies tr:hover {background-color: #ddd;}
+
+#cookies th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #4CAF50;
+  color: white;
+}
+</style>
+</head>
+<body>
+<br>
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+    <div class="text-left">
+      <button id="btn" type="button" class="btn btn-danger" value="update" onclick="location.href='/Admin/Logout'">Logout</button>
+    </div>
+    </div>
+    <div class="col-md-6">
+    <div class="text-right">
+      @{
+        var y = ViewBag.count;
+      <button id="btn" type="button" class="btn btn-warning" value="update" onclick="location.href='/Admin/Chats'">Chat(@y)</button>
+      }
+    </div>
+    </div>
+  </div>
+</div>
+<br>
+          <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                <div class="text-left">
+                <button id="btn" type="button" class="btn btn-primary" value="update" onclick="location.href='/Admin/Export'">Export</button>
+                </div>
+                </div>
+                <div class="col-md-6">
+                <div class="text-right">
+                <form asp-action="Import" asp-controller="Admin" enctype="multipart/form-data">
+                  <input  type="file" id="Upload" name="Upload" value="Upload">
+                  <button type="submit" class="btn btn-success">Import</button>
+                </form>
+                <br>
+                </div>
+              </div>
+            </div>
+          </div>
+<div class="text-center">
+<table id="cookies">
+  <tr>
+    <th>Id</th>
+    <th>Rating</th>
+    <th>Nama</th>
+    <th>Deskripsi</th>
+    <th>Harga</th>
+    <th>Action</th>
+  </tr>
+  @{
+    <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                <div class="text-left">
+                <button id="btn" type="button" class="btn btn-warning" value="update" onclick="location.href='/Admin/Add'">Add</button>
+                </div>
+                </div>
+                <div class="col-md-6">
+                <div class="text-right">
+                @{
+                  var z = ViewBag.counts;
+                <button id="btn" type="button" class="btn btn-warning" value="update" onclick="location.href='/Admin/Transaction'">Transaction(@z)</button>
+                }
+                </div>
+                </div>
+            </div>
+            <br>
+    </div>
+ 
+      var x = ViewBag.items;
+      foreach (var i in x)
+      {
+        <tr>
+            <td>@i.id</td>
+            <td>@i.rating</td>
+            <td>@i.nama</td>
+            <td>@i.deskripsi</td>
+            <td>@i.harga</td>
+            <td>
+                <button id="btn" type="button" class="btn btn-success" value="update" onclick="location.href='/Admin/Edit/@i.id'">Edit</button>
+                <button id="btn" type="button" class="btn btn-danger" value="update" onclick="location.href='/Admin/Remove/@i.id'">Remove</button>
+            </td>
+        </tr>
+      }
+  }
+</table>
+</div>
+</body>
+</html>

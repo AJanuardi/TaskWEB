@@ -1,0 +1,95 @@
+<style>
+    div.panel-body {
+        overflow: scroll;
+        width: 1100px;
+        height: 300px;
+    }
+</style>
+<br>
+<div class="text-center">
+<h1>Customer Services</h1>
+</div>
+<div class="chat-panel panel panel-default">
+    <div class="panel-body" id="chat">
+        <input type="hidden" id="displayname"/>
+        @{
+            var x = ViewBag.items;
+            foreach (var i in x)
+            {
+                
+                if (i.from == "Admin")
+                {
+        <p style="color:red; text-align:left;">Admin</p>
+        <p style="color:red; text-align:left;">
+        <strong><img src="https://www.phplivesupport.com/pics/icons/avatars/public/avatar_7.png" title="Admin"></strong>@i.pesan</p>
+                }
+                else if (i.from != "Admin")
+                {
+        <p style="color:black; text-align:right;">@i.from</p>
+        <p style="color:black; text-align:right;">
+        <strong><img src="https://www.phplivesupport.com/pics/icons/avatars/public/avatar_71.png" title="User"></strong>@i.pesan</p>
+                }
+            }
+        }
+        <p id="discussion"></p>
+    </div>
+    <div class="text-center">
+    <div class="panel-footer">
+        <br>
+        <div class="input-group">
+            <input id="to" type="hidden" name="to" class="form-control input-sm" placeholder="To" value="Admin" style="width: 100px; height: 38px;"/>
+            <input id="from" type="hidden" name="from" class="form-control input-sm" placeholder="From" value="@ViewBag.user" style="width: 700px; height: 38px;"/>
+            <input id="message" type="text" name="message" class="form-control input-sm" placeholder="Message"/>
+            <span class="input-group-btn">
+                <input type="button" class="btn btn-warning btn-sm" id="sendmessage" value="Send" style="width: 300px; height: 38px;">
+            </span>
+            </div>
+        <br>
+        </div>
+    </div>
+</div>
+    @section Scripts
+    {
+        <script type="text/javascript">
+           $(document).ready(function () {
+    
+            let connection = new signalR.HubConnectionBuilder().withUrl("/chatHub").build();
+
+            connection.start().then(function() {
+                console.log("Berhasil");
+
+                $('#sendmessage').on('click', function (event) {
+                    event.preventDefault();
+                    let from = $('#from').val();
+                    let to = $('#to').val();
+                    let message = $('#message').val();
+
+                    connection.invoke("SendMessage", from, to, message)
+                        .then(data => {
+                            console.log('Berhasil kirim data')
+                        }).catch(err => {
+                        return console.error(err.toString());
+                    })
+                });
+                connection.on("GotAMessage", function (from, to, message) {
+                   if (from == "Admin" ) 
+                    {
+                    // Add the message to the page.
+                    $('#discussion').append('<p style="color:;text-align:left;">'+'Admin'+'</p>' +'<p style="color:red; text-align:left;"><strong><img = src="https://www.phplivesupport.com/pics/icons/avatars/public/avatar_7.png" title="Admin">'
+                        + ' </strong> ' + message + '</p>');
+                    }
+                    else if (from != "Admin") 
+                    {
+                    // Add the message to the page.
+                    $('#discussion').append('<p style="color:black;text-align:right;">'+from+'</p>' +'<p style="color:black; text-align:right;"><strong><img = src="https://www.phplivesupport.com/pics/icons/avatars/public/avatar_71.png" title="User">'
+                        + ' </strong> ' + message + '</p>');
+                    }
+
+                });
+
+            }).catch(function (err) {
+                return console.error(err.toString());
+            });
+                })
+        </script>
+    }
