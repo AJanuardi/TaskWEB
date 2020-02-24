@@ -97,6 +97,8 @@ namespace MVC.Controllers
         {
             var count = (from i in _appDbContext.Chats where (i.status == null) select i).Count();
             ViewBag.count = count;
+            var counts =(from i in _appDbContext.Transactions where (i.status == "pay") select i).Count();
+            ViewBag.counts = counts;
             var token = HttpContext.Session.GetString("JWTToken");
             var jwtSec  = new JwtSecurityTokenHandler();
             var securityToken = jwtSec.ReadToken(token) as JwtSecurityToken;

@@ -2,7 +2,7 @@
 
 namespace MVC.Migrations
 {
-    public partial class databaselagiyo : Migration
+    public partial class databaseinifixlobro : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -64,7 +64,8 @@ namespace MVC.Migrations
                     address = table.Column<string>(nullable: true),
                     phone = table.Column<string>(nullable: true),
                     email = table.Column<string>(nullable: true),
-                    total = table.Column<int>(nullable: false)
+                    total = table.Column<int>(nullable: false),
+                    status = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {

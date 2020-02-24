@@ -14,8 +14,6 @@
     <!-- Bootstrap core CSS -->
     <link href="https://getbootstrap.com/docs/4.0/dist/css/bootstrap.min.css" rel="stylesheet">
 
-    <!-- Custom styles for this template -->
-    <link href="form-validation.css" rel="stylesheet">
   </head>
 
   <body class="bg-light">
@@ -121,7 +119,7 @@
   </body>
 </html>
 <div class="text-center">
-    <form asp-action="Payment" asp-controller="Home" method="POST">
+    <form asp-action="Pay" asp-controller="Home" method="POST">
         <script src="//checkout.stripe.com/v3/checkout.js"
         class="stripe-button"
         data-key="@Stripe.Value.PublishableKey"

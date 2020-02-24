@@ -103,7 +103,8 @@ namespace MVC.Controllers
                 address = address,
                 email = email,
                 phone = phone,
-                total = total
+                total = total,
+                status = Convert.ToString("wait payment")
             };
             _appDbContext.Transactions.Add(harga);
             _appDbContext.SaveChanges();
@@ -120,7 +121,7 @@ namespace MVC.Controllers
             return View("Payment");
         }
 
-        public IActionResult Payment(string stripeEmail, string stripeToken)
+        public IActionResult Pay(string stripeEmail, string stripeToken)
         {
             var customer = new CustomerService();
             var charges = new ChargeService();
@@ -129,10 +130,9 @@ namespace MVC.Controllers
                 Source = stripeToken
             });
             var x = from i in _appDbContext.Transactions.OrderByDescending(a => a.id) select i;
-            foreach (var i in x)
-            {
+            var last = x.FirstOrDefault();
             var charge = charges.Create(new ChargeCreateOptions{
-                Amount = (i.total*100),
+                Amount = (last.total*100),
                 Description = "Test Payment",
                 Currency = "idr",
                 Customer = customers.Id
@@ -142,12 +142,14 @@ namespace MVC.Controllers
                 string BalanceTransactionId = charge.BalanceTransactionId;
                 return RedirectToAction("Success", "Home");
             }
-            }
             return View();
         }
 
         public IActionResult Success()
         {
+            var y = (from i in _appDbContext.Transactions.OrderBy(a => a.id) select i).LastOrDefault();
+            y.status = "pay";
+            _appDbContext.SaveChangesAsync();
             var message = new MimeMessage();
             var x = from i in _appDbContext.Transactions.OrderBy(a => a.id) select i;
             var last = x.LastOrDefault();

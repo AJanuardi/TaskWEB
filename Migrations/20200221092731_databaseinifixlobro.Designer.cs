@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MVC.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20200221073749_databaselagiyo")]
-    partial class databaselagiyo
+    [Migration("20200221092731_databaseinifixlobro")]
+    partial class databaseinifixlobro
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -109,6 +109,9 @@ namespace MVC.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("phone")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("status")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("total")

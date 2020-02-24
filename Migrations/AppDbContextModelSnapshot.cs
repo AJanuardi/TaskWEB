@@ -109,6 +109,9 @@ namespace MVC.Migrations
                     b.Property<string>("phone")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("status")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<int>("total")
                         .HasColumnType("int");
 

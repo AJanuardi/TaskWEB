@@ -10,5 +10,6 @@ namespace MVC.Models
         public string phone {get;set;}
         public string email {get;set;}
         public int total {get; set;}
+        public string status {get; set;}
     }
 }

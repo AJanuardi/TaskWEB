@@ -87,7 +87,10 @@
                 </div>
                 <div class="col-md-6">
                 <div class="text-right">
-                <button id="btn" type="button" class="btn btn-warning" value="update" onclick="location.href='/Admin/Transaction'">Transaction</button>
+                @{
+                  var z = ViewBag.counts;
+                <button id="btn" type="button" class="btn btn-warning" value="update" onclick="location.href='/Admin/Transaction'">Transaction(@z)</button>
+                }
                 </div>
                 </div>
             </div>
